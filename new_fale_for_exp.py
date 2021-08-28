@@ -545,8 +545,23 @@ def join_digits(num: int) -> str:
 # print(func(3)(2))
 
 
-# HTTP HTTPS
-# датаклассы
+def tasks(num: int, d_str='день') -> str:
+    """
+    Перевод секунд в дни/часы/минуты/секунды
+    :param d_str: нужен если выводить строку по-русски
+    :param num: целочисланное значение (секунды)
+    :return: дни/часы/минуты/секунды
+    """
+    days: int = num // 60 ** 2 // 24
+    hours: int = num // 60 ** 2 - days * 24
+    minutes: int = num // 60 - (hours + days * 24) * 60
+    sec: int = num - (minutes + (hours + days * 24) * 60) * 60
 
+    if 1 < days < 5:
+        d_str = 'дня'
+    if days > 5:
+        d_str = 'дней'
+    return f"{days} {d_str}, {hours}:{minutes}:{sec}"
+    # return f"{days} {'дня(ей)' if days > 1 else 'день'}, {hours}:{minutes}:{sec}"
 
-
+print(tasks(224930))
