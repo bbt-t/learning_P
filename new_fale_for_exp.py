@@ -98,8 +98,8 @@
 #     return index
 #
 # print(BinaryFind(20,[10,20,30,40,50,60,70,80]))
-######
 
+######
 
 # Проверка записи логов и "ротации" по 10кб (rotation) в zip-архиве(compression):
 #
@@ -120,6 +120,7 @@
 # def ExmpLoguruDec(a,b):
 #     print(a/b)
 
+################
 
 # Сортировка списка "а" в соответствии с частотой "встречи" его элементов в списке "b" :
 # from collections import Counter
@@ -261,6 +262,12 @@
 # from typing import Union, Iterable
 #
 # def example_Zam(chars):
+#     """
+#     Пример проверки входящего аругмента на соответствие с ожидаемым типом с помощью функции
+#     ininstance() и модуля typing (Union, Iterable)
+#     :param chars: строка
+#     :return: строка
+#     """
 #     def some_def(string: Union[str, Iterable[str]]):
 #         if not isinstance(string,str):
 #             raise ValueError("Argument must be a string")
@@ -355,6 +362,7 @@
 # Petya = SonClass()
 # print(Petya)
 
+#################
 
 # from functools import wraps
 # def taboo_agrs(func):
@@ -377,10 +385,11 @@
 #
 # print(func_for_upper())
 
-####
-#        Валидатор: Дескриптор
-import re
+###########
 
+#        Валидатор: Дескриптор
+#import collections
+#import itertools
 
 class ValidSting:
     def __set_name__(self, owner, property_name):
@@ -444,7 +453,7 @@ class MyDataClass:
 #datac_obj.x = 33 --> dataclasses.FrozenInstanceError: cannot assign to field 'x'
 
 
-
+###########
 
 # def check_syntax(string: str) -> bool:
 #     """
@@ -460,17 +469,21 @@ class MyDataClass:
 #
 # print(check_syntax("1 + -22"))
 
-# Ограчинение выполняемых функций eval():
+##########
+
+# Ограчинение выполняемых функций eval(): ОЧЕНЬ ВАЖНО ИСПОЛЬЗОВАТЬ!
 # print(eval('abs(1-1)',{'__builtins__': None},{'print':print,'abs':abs})
 
-def join_digits(num: int) -> str:
-    """
-    Переводит число в строку поцифренно(10 -> '1','0')
-    :param num: целочисленное значение
-    :return: строка с добавлением '-' между элементами
-    """
-    return '-'.join(''.join(str(x) for x in range(1, num + 1)))
+##########
+# def join_digits(num: int) -> str:
+#     """
+#     Переводит число в строку поцифренно(10 -> '1','0')
+#     :param num: целочисленное значение
+#     :return: строка с добавлением '-' между элементами
+#     """
+#     return '-'.join(''.join(str(x) for x in range(1, num + 1)))
 
+############
 
 # from typing import NamedTuple
 # class For_Exp_NT(NamedTuple):
@@ -483,8 +496,8 @@ def join_digits(num: int) -> str:
 # print(a)
 # print(type(b))
 
-
 ############
+
 # import string
 #
 # a = "'![Prii? v"
@@ -495,9 +508,8 @@ def join_digits(num: int) -> str:
 #
 # trans_t = str.maketrans({'о':'и'})
 # print('кот'.translate(trans_t))
+
 ###########
-
-
 
 # def who_won_BADFUNC(sc_player_1: list, sc_player_2: list) -> str:
 #     """
@@ -519,6 +531,8 @@ def join_digits(num: int) -> str:
 #     else:
 #         return "Ничья"
 
+#############
+
 # def who_won_NICEFUNC(*args: list, count_t:int = 0) -> str:
 #     """
 #     Сопоставляет с константой и выдаёт "выигрывшую" команду (по очереди входа аргументов)
@@ -537,16 +551,26 @@ def join_digits(num: int) -> str:
 #
 # print(who_won_NICEFUNC([6, 4, 3, 1], [12, 0, 0, 1]))
 
+#############
 
+# Альтернатив проверки на чётность / не чётность через Bool-выражение:
 # a = [x for x in range(10) if not x % 2]
 # print(a)
 
+#############
+
 # def func(x):
+#     """
+#     Функцию можно вызывать,передав 2 раза аргумент
+#     :param x: (х)-1й аргумент и  сразу за ним (у) - второй для влож.функции
+#     :return: результат вложеной функции
+#     """
 #     def inner_func(y):
 #         return x * y
 #     return inner_func
 # print(func(3)(2))
 
+#############
 
 # def to_readable(num: int, d_str='день') -> str:
 #     """
@@ -574,7 +598,8 @@ def join_digits(num: int) -> str:
 #
 # print(to_readable(224930))
 #
-#
+#####################
+
 # def string_to_lst(string: str) -> list:
 #     """
 #     Создание списка из строки с сохранением пунктуации и без пробелов
@@ -583,9 +608,104 @@ def join_digits(num: int) -> str:
 #     """
 #     return re.split(',', ''.join([x for x in string if not x.isspace()]))
 
+#####################
+
 # # Создание словаря:
 # a = dict(
 #         [(1,1),
 #         (2,2),
 #         (3,3)]
 #         )
+##############
+
+#разделение для лучшей читаемости
+#print(3_000_000) -> 3000000
+
+##############
+# ВАЖНО ПОМНИТЬ ЧТО lambda ЭТО ФУНКЦИЯ!
+# def mult(x):
+#     return x ** m
+# lst = range(6)
+# m = 2
+# # каждый элемент из 0,1,2,3,4,5 (range(6) взводится в степень m (2)
+# map_res = map(lambda x: x**m,lst) # -> 0, 1, 4, 9, 16, 25
+# # Не забываем что лябмда - это всё-таки ФУНКЦИЯ! и поведение у неё соответствующее!
+# #map_res = map(mult,lst) # -> 0, 1, 4, 9, 16, 25
+# lst = [1,2,3,6,9]
+# m = 1
+# #т.к map - это по сути генератор, он сохранил ранее ссылку на первое значение lst
+# print(*[x for x in map_res]) # -> 0 1 2 3 4 5
+##########
+
+# Сначала max потом min и далее среднее значение:
+# a,b,c = (input() for x in range(3))
+# print(*sorted((a,b,c))[::-2],sorted((a,b,c))[1], sep= "\n")
+###
+
+# Пример как можно добалять несоклько if в вывод:
+# n = input()
+# print(f"{n} программист{'а' if 1 < int(n[-1]) < 5 else ('' if n[-1] == '1' else 'ов')}")
+
+#####
+# Особенности оператора возведения в степень:
+# a,b = 2,3
+# c = a**b**a -->> # a** (b**a)
+# print(c) #--> 512
+
+#########
+#
+# def to_one_dimension_list(lst: list) -> list:
+#     from collections.abc import Iterable
+#     """
+#     Прекрасссный вариант для перевода многомерного списка в одномерный!
+#     Реализуем генератор через цикл и yield:
+#     Для значений в входном списке:
+#         если значение является iterable obj,то берём(возвращаем) вызов функции с этим значением в качестве
+#         аргумента и дажее по той же схеме.
+#         если значение НЕ итерабл, то возвращаем его.
+#     :param lst: список любой вложенности
+#     :return: одномерный список
+#     """
+#     def to_one():
+#         for sublist in lst:
+#             if isinstance(sublist, Iterable) and not isinstance(sublist, str):
+#                 yield from to_one_dimension_list(sublist)
+#             else:
+#                 yield sublist
+#     return list(to_one())
+#
+# #####
+#
+# def to_one_dimension_list_2(lst: list) -> list:
+#     from collections.abc import Iterable
+#     """
+#     Ещё вариант для перевода многомерного списка в одномерный.
+#     Рекурсия (по возможности не использовать!)
+#     :param lst: многомерный список
+#     :return: одномерный список
+#     """
+#     if isinstance(lst, collections.abc.Iterable):
+#         return [x for sublist in lst for x in to_one_dimension_list(sublist)]
+#     else:
+#         return [lst]
+#
+# ####
+#
+# def to_one_dimension_list_3(lst):
+#     from collections.abc import Iterable
+#     """
+#     Не рекурсивный вариант перевода списка в одномерный.
+#     :param lst: многомерный список (с Tuple тоже будет работать!)
+#     :return: одномерный список
+#     """
+#     lst = list(lst)
+#     def to_one():
+#         while lst:
+#             while lst and isinstance(lst[0], Iterable):
+#                 lst[0:1] = lst[0]
+#             if lst:
+#                 yield lst.pop(0)
+#     return list(to_one())
+
+#####
+
