@@ -390,58 +390,62 @@
 #        Валидатор: Дескриптор
 #import collections
 #import itertools
+import string
 
-class ValidSting:
-    def __set_name__(self, owner, property_name):
-        self.property_name = property_name
-
-    def __set__(self, instance, value):
-        print('Вызван __set__()')
-        if not isinstance(value, str):
-            raise ValueError(f"self.property_name must be a string")
-        # key = f"_{self.property_name}"
-        # setattr(instance, key, value)
-        #2 строчки выше и 1 нижу равны по функционалу (заменяют друг друга) ,
-        # оба варианта записывают значение в локальный словарь и добавляют _ .
-        instance.__dict__[self.property_name] = value
-
-    def __get__(self, instance, owner):
-        print("Вызван get()")
-        if isinstance is None:
-            return self
-        # key = f"_{self.property_name}"
-        # return getattr(instance, key, None)#None - значение по умолчанию
-        #2 строчки выше и 1 нижу равны по функционалу (заменяют друг друга) ,
-        # оба варианта показывают значение из лок.словаря. #None - значение по умолчанию
-        return instance.__dict__.get(self.property_name, None)
+import let as let
 
 
-class ExampleValid:
-    name = ValidSting()
-    other_name = ValidSting()
-
-a = ExampleValid()
-a.name = 'Ivat'
-print(a.__dict__)
-print(a.name)
+# class ValidSting:
+#     def __set_name__(self, owner, property_name):
+#         self.property_name = property_name
+#
+#     def __set__(self, instance, value):
+#         print('Вызван __set__()')
+#         if not isinstance(value, str):
+#             raise ValueError(f"self.property_name must be a string")
+#         # key = f"_{self.property_name}"
+#         # setattr(instance, key, value)
+#         #2 строчки выше и 1 нижу равны по функционалу (заменяют друг друга) ,
+#         # оба варианта записывают значение в локальный словарь и добавляют _ .
+#         instance.__dict__[self.property_name] = value
+#
+#     def __get__(self, instance, owner):
+#         print("Вызван get()")
+#         if isinstance is None:
+#             return self
+#         # key = f"_{self.property_name}"
+#         # return getattr(instance, key, None)#None - значение по умолчанию
+#         #2 строчки выше и 1 нижу равны по функционалу (заменяют друг друга) ,
+#         # оба варианта показывают значение из лок.словаря. #None - значение по умолчанию
+#         return instance.__dict__.get(self.property_name, None)
+#
+#
+# class ExampleValid:
+#     name = ValidSting()
+#     other_name = ValidSting()
+#
+# a = ExampleValid()
+# a.name = 'Ivat'
+# print(a.__dict__)
+# print(a.name)
 ########
 ##      ДАТАКЛАСС
-from dataclasses import dataclass, field
-
-@dataclass(order=True, frozen=True)
-# (order=True) - нужно указывать чтобы иметь возможность отсортировать (sorted()) или сравнивать несолько экземпляров
-# класса. Сортировка будет по значению первого атрибута (если они равны, то по 2му)
-# frozen=True означает что мы запрещаем изменение атлибутов класса (становятся "только для чтения") для экземпляров
-# класса. Т.е по сути это аналог звщищённого атрибута _x/_y/_z
-class MyDataClass:
-    #то что ниже это __init__ ! т.еатрибуты динамические, а не статические!
-    y: list = field(compare=False) #не будет участвовать в сортировке
-    z: int = field(repr=False)#запрет на вывод атрибута z в репр (при принте)
-    x: int = field(default=1) # можно указывать значение по умолчанию
-
-    def __post_init__(self): #здесь можно делать что угодно!
-        #self.gen = self.y.append((self.x + self.z)) - не работает с frozen=True !
-        pass
+# from dataclasses import dataclass, field
+#
+# @dataclass(order=True, frozen=True)
+# # (order=True) - нужно указывать чтобы иметь возможность отсортировать (sorted()) или сравнивать несолько экземпляров
+# # класса. Сортировка будет по значению первого атрибута (если они равны, то по 2му)
+# # frozen=True означает что мы запрещаем изменение атлибутов класса (становятся "только для чтения") для экземпляров
+# # класса. Т.е по сути это аналог звщищённого атрибута _x/_y/_z
+# class MyDataClass:
+#     #то что ниже это __init__ ! т.еатрибуты динамические, а не статические!
+#     y: list = field(compare=False) #не будет участвовать в сортировке
+#     z: int = field(repr=False)#запрет на вывод атрибута z в репр (при принте)
+#     x: int = field(default=1) # можно указывать значение по умолчанию
+#
+#     def __post_init__(self): #здесь можно делать что угодно!
+#         #self.gen = self.y.append((self.x + self.z)) - не работает с frozen=True !
+#         pass
 
 
 # datac_obj = MyDataClass([1, 4, 6], 8)
@@ -707,5 +711,126 @@ class MyDataClass:
 #                 yield lst.pop(0)
 #     return list(to_one())
 
-#####
+############
 
+# Фрагмент таблицы умножения для всех чисел отрезка [a,b] на все числа отрезка [c,d].
+# Числа a, b, c и d являются натуральными и не превосходят 10, a<=b, c<=d.
+
+# from collections.abc import Iterable
+# # #
+# a, b, c, d = (int(input()) for i in range(4))
+# #lst_a = [x for x in range(a, b + 1)]
+# #lst_b = [x for x in range(c, d + 1)]
+#
+# print(*(lst_a := [x for x in range(a, b + 1)]))
+# for _ in zip(lst_b := [x for x in range(c, d + 1)], [[i * j for j in lst_a] for i in lst_b]):
+#     for l in _:
+#         if isinstance(l, Iterable):
+#             print(*l)
+#         else:
+#             print(l, end=' ')
+
+#pp = [[i * j for j in a] for i in b]
+#result = zip(b,pp)
+
+##################
+
+# Пример важности срезов:
+# a = [1,2,3]
+# b = a
+# print(b==a,a is b, sep='\n')
+# b = a[:]
+# print(b is a) #-> False !
+
+# C неизменяемыми типами (str,tuple) совсем иначе! :
+# arr1 = 'simple string'
+# arr2 = arr1[:]
+# print(id(arr1), id(arr2))
+# print(arr1 is arr2) #-> True !
+
+# ОЧЕНЬ ВАЖНО!
+# a = 'hello'
+# b = 'hell'+'o'
+# print(a is b) #--> True
+
+##############
+
+# a = [1,2,3]
+# a.reverse() # как и reversed() НЕ изменяет существущий список, возвращает итератор!
+
+###########
+
+# def to_pairs(lst: list, fill_char: int = None) -> list:
+#     """
+#     Разбиение по парам (2) списка.
+#     :param lst: одномерный список
+#     :param fill_char: не обязательный параметр, добавляет заданное число если нечётное кол-во элементов
+#     :return: двумерный список
+#     """
+#     inner_l: list = lst[:]
+#
+#     if len(lst) % 2:
+#         inner_l.append(fill_char)
+#     return [inner_l[v:v + 2] for v in range(0, len(inner_l), 2)]
+
+ #ИЛИ: блок if здесь уже не нужен ! т.к используется zip() !
+    # inner_l= lst[:] + [fill_char]
+    # return [list(x) for x in zip(inner_l[::2], inner_l[1::2])]
+    # или с моржом:
+    # return [list(x) for x in zip((inner_l:= lst[:] + [fill_char])[::2], inner_l[1::2])]
+
+############
+
+# def rot(text: str, offset=13) -> str:
+#     """
+#     Шифр ROT13 относится к сокращенной форме Поворот на 13 мест . Это особый случай Цезаря Шифра, в котором сдвиг
+#     всегда равен 13 (по умолчанию). Каждая буква сдвигается на 13 мест, чтобы зашифровать сообщение.
+#     Расшифровка через отрицательное значение offset.
+#     :param text: строка
+#     :param offset: сдвиг
+#     :return: зашифрованная/расшифрованная строка
+#     """
+#     str_ascii = string.ascii_letters
+#     return text.translate(str.maketrans(str_ascii, str_ascii[offset:] + str_ascii[:offset]))
+
+#####################
+
+# def permutations(string:str):
+#     from itertools import permutations
+#     """
+#     Выдаёт все возможные комбинации элементов.
+#     :param string: строка
+#     :return: список строк с комбирациями
+#     """
+#     return [''.join(x) for x in permutations(string, r= None)]
+
+# def custom_permutations(string: str) -> list:
+#     """
+#     Выдаёт все возможные комбинации элементов. (альтернатива itertools permutations)
+#     :param string: строка
+#     :return: список строк с комбирациями
+#     """
+#     from random import shuffle
+#     lst_s = [x for x in string]
+#     res_l = []
+#     for _ in range(len(string) ** len(string)):
+#         shuffle(lst_s)
+#         res_l.append(''.join(lst_s))
+#     return list(set(res_l))
+
+##############
+
+# def gimme_the_letters(span_let: str) -> str:
+#     """
+#     Строка из всех букв англиского алф. нужного диапазона.
+#     :param span_let: строка,диапазон букв английского алфавита (н/р: "a-z")
+#     :return: возвращает строку из всех букв этого диапазона.
+#     """
+#     ascii_l = string.ascii_letters
+#     return ascii_l[ascii_l.index(span_let[0]):ascii_l.index(span_let[-1]) + 1]
+
+############
+
+
+
+if __name__ == '__main__':

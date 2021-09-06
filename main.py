@@ -1,35 +1,41 @@
 from myclasses import *
 
+# def speedtest():
+#     import speedtest
+#     """
+#     Тест скорости интернета
+#     :return: upload/download в мбит/с
+#     """
+#     my_speed = speedtest.Speedtest()
+#     speed_dl = my_speed.download()/(2**20)
+#     speed_upl = my_speed.upload()/ (2**20)
+#     return f"Скорость скачивания {speed_dl: 1.1f} мбит/с' Скорость отдачи {speed_upl: 1.1f} мбит/с'))"
 
-# num_1 = [1,2,3,4,5,2,7,2]
-# print(num_1.count(2), num_1, num_1[5], sep=" ")
+############
 
-# user_imp = tuple(input("Enter string: "))
-# new_tuple = tuple(user_imp[::int(input("enter step: "))])
-# for i,v in enumerate(user_imp):
-#     print(i,v)
-# print(new_tuple, type(new_tuple), sep=" ")
-
-# import speedtest
+# def user_lat_rand(num: int) -> list:
+#     """
+#     Рандомные (случайные) буквы
+#     :param num: сколько букв
+#     :return: список
+#     """
+#     from random import choice
+#     from string import ascii_letters
 #
-# my_speed = speedtest.Speedtest()
-# speed_dl = my_speed.download()/(2**20)
-# print(f'Скорость скачивания {speed_dl: 1.1f} мбит/с')
-#
-# speed_upl = my_speed.upload()/ (2**20)
-# print(f'Скорость отдачи {speed_upl: 1.1f} мбит/с')
+#     return list("".join(choice(ascii_letters) for x in range(num)))
 
+# def nn(num):
+#     """
+#     Выводит список рандомных чисел
+#     :param num: сколько чисел вывести
+#     :return: список из рандомных чисел
+#     """
+#     return list("".join(random.choice(string.digits) for x in range(a)))
+#
+#     Рандомный список: return list("".join(random.choice(string.digits) for x in range(a)))
 
-# user_input = sorted(tuple(str(int(input("enter you'r number: ")))), reverse=True)
-# print(user_input)
+####################
 
-# import random
-# import string
-#
-# def user_lat_rand(a):
-#     return list("".join(random.choice(string.ascii_letters) for x in range(a))) #рандомные буквы
-#
-#
 # while True:
 #     try:
 #         user_choice = input("Do you have display random letter? YES/NO ")
@@ -63,19 +69,9 @@ from myclasses import *
 # print(adic(numb))
 
 
-# import random
-# import string
-
-# def nn(a):
-#     return list("".join(random.choice(string.digits) for x in range(a)))  #рандомное число
-# dict_1 = {a: a for a in range(user_num)}                                   #простой генератор словаря
+#dict_1 = {a: a for a in range(user_num)}                        #простой генератор словаря
 
 # Самостоялка перед множествами
-# import random
-# import string
-#
-# def nn(a):
-#     return list("".join(random.choice(string.digits) for x in range(a))) #рандомный список
 #
 #
 # user_num = int(input("Enter 6: "))
@@ -196,7 +192,7 @@ from myclasses import *
 #
 # #list(reversed(user_list)) #СОЗДАЁМ!!! если использовать метод .sort() НЕ возвращает результат соритировки (NONE)!
 
-# result = dict(zip(user_list, list(reversed(user_list)))) #создаём словарь из 2х списков с помощью zip! (ключи, значения)
+# result = dict(zip(user_list, list(reversed(user_list)))) #создаём словарь из 2х списков с помощью zip!(ключи, значения)
 #
 # print(result)
 
@@ -206,14 +202,6 @@ from myclasses import *
 #     number_card = user_card[len(user_card) - 4:].rjust(len(user_card), '*')
 #     return number_card
 #
-#
-# user_input = (input("Enter card number: "))
-# print(user_card_secure(user_input), type(user_card_secure(user_input)))
-
-# def sum(number):
-#     return number ** 2
-# a = [1,2,3,4,5]
-# print(list(map(lambda n: n**2 ,a)))
 
 # Самостоялка №2
 # user_list = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
@@ -338,7 +326,7 @@ from myclasses import *
 # iter_n = list(iter(n.items()))
 # print(iter_n)
 
-# Как сделать свой iter класс:
+# Как сделать свой итератор (iter-класс):
 # class custom_range:
 #     def __init__(self,start,end):
 #         self.start = start
@@ -357,40 +345,39 @@ from myclasses import *
 # for number in first_range:
 #     print(number)
 
-# Пример беспонечной последовательности целых чисел
+# Пример беспонечной последовательности целых чисел:
 # def get_inf_square_gen():
+#     """
+#     Бесконечный генератор целых чисел
+#     :return: целое число
+#     """
 #     numb = 1
 #     while True:
 #         yield pow(numb,2) #или numb**2
 #         numb+=1
 # inf_square_generator = get_inf_square_gen()
-#
 # print(next(inf_square_generator))
 
-# БЕСКОНЕЧНО ПЕРЕБОР
+#################
+
+# БЕСКОНЕЧНЫЙ ПЕРЕБОР:
 # def even_gen():
+#     """
+#     Бесконечный генератор из заданной последовательности
+#     :return: значение из последотельности
+#     """
 #     gen_list = ['even', 'odd', 'second']
 #     while True:
 #         for value in gen_list:
 #             yield value
-#
+
 # infinity_gen = even_gen()
 #
 # print(next(infinity_gen))
 # print(next(infinity_gen))
-# print(next(infinity_gen))
-# print(next(infinity_gen))
 
-# Замер выполнения
-# import time
-# nums = [k for k in range(10000000)]
-# nums_1 = (k for k in range(10000000))
-#
-# start_time = time.time()
-# print(sum(nums))
-# proces_time = time.time() - start_time
-# print(f'Выполненно за {proces_time}')
-
+####################
+# Чтение из файла:
 # n = 10
 # a = ~n+1
 # print(n)
@@ -417,10 +404,33 @@ from myclasses import *
 #
 # print(b)
 
+# Контекстный менеджер with:
 
 # with open("D:\\123.txt") as fm:
 #     for l in fm:
 #         print(l,end="")
+
+
+# with open("D:\\123.txt") as text_user:
+#     text_in_list = []
+#     for t in text_user:
+#         text_in_list.append(t.strip("\n"))
+#     print(text_in_list)
+
+
+# with open("D:\\12343.txt", "a+") as sfile:
+#     sfile.seek(0,2)
+#     sfile.write("\nPrivet!")
+
+# with open('D:\\12355.txt','bw') as test_file:
+#     test_file.write(bytes([1,2,3]))
+#
+# with open('D:\\12355.txt','br') as test_file:
+#     for number in test_file:
+#         print(number)
+
+###############
+
 # import os
 # import random
 # from datetime import date
@@ -440,16 +450,7 @@ from myclasses import *
 #
 # print(input_time(date_1))
 
-# with open("D:\\123.txt") as text_user:
-#     text_in_list = []
-#     for t in text_user:
-#         text_in_list.append(t.strip("\n"))
-#     print(text_in_list)
 
-
-# with open("D:\\12343.txt", "a+") as sfile:
-#     sfile.seek(0,2)
-#     sfile.write("\nPrivet!")
 # для итерации по нескольким спискам используем ZIP!:
 # a = [1,2,3,4,5]
 # b = ['c','d','f']
@@ -472,14 +473,24 @@ from myclasses import *
 # list_game = [1,2,4,0,0,7,5] #True
 # list_game_1 = [1,0,2,4,0,5,7] #True
 #
-# def spy_game(list_from_game):
+# def spy_game(list_from_game: list) -> bool:
+#     """
+#     способ №1 , жестко привязанный к поиску именно 007
+#     :param list_from_game: список
+#     :return: BOOL
+#     """
 #     list_str = str(list_from_game).replace(",","").replace(" ","")
 #     if list_str.find("007") > 0:
 #         return True
 # print(spy_game(list_game))
 #
-#                                 #2й способ (между 0 0 7 могут быть другие цифры)
-# def spy_game_1(list_from_game):
+#
+# def spy_game_1(list_from_game: list) -> bool:
+#     """
+#     2й способ (между 0 0 7 могут быть другие цифры)
+#     :param list_from_game:
+#     :return: BOOL
+#     """
 #     code = [0,0,7,"x"]
 #     for num in list_from_game:
 #         if num == code[0]:
@@ -487,14 +498,8 @@ from myclasses import *
 #     return len(code) == 1
 # print(spy_game_1(list_game))
 
+#############
 
-# with open('D:\\12355.txt','bw') as test_file:
-#     test_file.write(bytes([1,2,3]))
-#
-# with open('D:\\12355.txt','br') as test_file:
-#     for number in test_file:
-#         print(number)
-#
 # import pickle
 #
 # honda = ('cbr','yellow',2010,((1,'Ivan'),(2,'Nik')))
@@ -524,10 +529,13 @@ from myclasses import *
 # a = list(set(a))
 # print(a)
 
-#                                 #ПЕРЕМНОЖИТЬ ВСЕ ЭЛЕМЕНТЫ СПИСКА! ЧЕРЕЗ math.prod() !
+###################
+
+# ПЕРЕМНОЖИТЬ ВСЕ ЭЛЕМЕНТЫ СПИСКА можно ЧЕРЕЗ math.prod() !
 # import math
 # print(math.prod(a))
-############
+
+##############
 
 # ОЧЕНЬ ВАЖНО ЗНАТЬ И ИСПОЛЬЗОВАТЬ!!!!!!!!!!!!!!!
 
@@ -543,10 +551,14 @@ from myclasses import *
 #
 # print(first_number)
 
-###
+#################
+
 # def is_divisible(num):
 #     return num % sum(map(int,str(num))) == 0
 # print(is_divisible(75))
+
+#################
+
 # СОЗДАНИЕ КЛАССА:
 # class Person:
 #     ### Общие атрибуты (поля)
@@ -662,7 +674,7 @@ from myclasses import *
 # print(type(ppp))
 
 
-# #для ускорения вычислений в 100 раз:
+# # Для ускорения математических вычислений в '100 раз' с помощью njit :
 # from numba import njit
 #
 # import math
@@ -678,18 +690,19 @@ from myclasses import *
 #         if not num %div:
 #             return False
 #     return True
+
 # @njit(fastmath = True)
 # def run_prog(N):
 #     for i in range(N):
 #         pryme_test(i)
 #
-# if __name__ == '__main__':
-#     N = 10000000
-#     start = perf_counter()
-#     run_prog(N)
-#     end = perf_counter()
-#     print(end - start)
+#N = 10000000
+#start = perf_counter()
+#run_prog(N)
+#end = perf_counter()
+#print(end - start)
 
+#########################
 
 # ad = int(input())
 # n = 2
@@ -749,8 +762,24 @@ from myclasses import *
 #
 # print(sys.getrefcount(foo))
 
+###############
 
-#########                   ЗАМЫКАНИЯ:
+# ЗАМЫКАНИЯ:
+
+# def exp_z():
+#     inp_list = []
+#     def list_c(exp_z):
+#         inp_list.append(exp_z)
+#         return inp_list
+#
+#     return list_c
+#
+# for_exp = exp_z()
+# print(for_exp(12))
+# print(for_exp(11))
+# Узнать значения в замыкании:
+# get_result = for_exp.__closure__[0].cell_contents
+
 # def pow_(base=1):
 #     return lambda base: base*3
 # abcsds = pow_()
@@ -775,6 +804,7 @@ from myclasses import *
 #
 # print("OK!" if "Igor" in students.__closure__[0].cell_contents else "NO!")
 
+###############
 
 # def calc(imp_expression):
 #     a = "+-/*"
@@ -788,33 +818,19 @@ from myclasses import *
 #         except:
 #             return f"{imp_expression} не корректно!"
 
-###
-#                                       Уменьшение вложенности списка:
+#############
+
+# Уменьшение вложенности списка:
+
 # v_list = [[[1,2,3],[4,5,6]],[[7,8,9],[10,11,12]],[13,14,15]]
 #
 # g_list = [x for row in v_list for x in row]
 # s_list = [x for row in g_list[:4] for x in row]
 # print(s_list)
-####
-####
 
+#####################
 
-#                                               ЗАМЫКАНИЯ:
-# def exp_z():
-#     inp_list = []
-#     def list_c(exp_z):
-#         inp_list.append(exp_z)
-#         return inp_list
-#
-#     return list_c
-#
-# for_exp = exp_z()
-# print(for_exp(12))
-# print(for_exp(11))
-# Узнать значения в замыкании:
-# get_result = for_exp.__closure__[0].cell_contents
-
-### Пример использования модуля datetime:
+# Пример использования модуля datetime:
 
 # def log_message(message, when=None): #ОЧЕНЬ! важно указывать параметр по умолчанию именно NONE !!!
 #     when = (datetime.datetime.now()).strftime('%m/%d/%y %H:%M:%S')
@@ -841,6 +857,7 @@ from myclasses import *
 #             n += 1
 #     return f"+7{''.join(result[1:])}"
 
+####################
 
 # Тестирование кода:
 # for _ in phone_number:
@@ -849,12 +866,19 @@ from myclasses import *
 # print("FINISH!")
 
 # def foo(x,y):
+#     """
+#     Отлавливаем произошедшую ошибку
+#     :param x: pass
+#     :param y: pass
+#     :return: вывод ошибки (если она произошла)
+#     """
 #     try:
 #         return x//y
 #     except (TypeError, ZeroDivisionError) as e:
 #         print(f"ERROR! {e}")
 #         print(type(e))
 
+####################
 
 # while True:
 #     command = input("Введите команду: ")
@@ -873,12 +897,14 @@ from myclasses import *
 #         print(f"Задача {task} добавлена на {date_for_task}")
 
 #################
+
 #                       Создание копии файла в реверсе:
 
 # with open("D:\\dataset_24465_4.txt","r") as text_1 , open("D:\\dataset_exp.txt","w") as text_2:
 #     text_inp = [x.strip() for x in text_1]
 #     for _ in text_inp[::-1]:
 #         text_2.write(_+"\n")
+
 ###########################
 
 # from collections import OrderedDict, defaultdict, deque
@@ -894,7 +920,8 @@ from myclasses import *
 # a.pop()
 # print(a)
 
-####
+########
+
 # a = [19, 46, -2097, 134]
 
 # # def ends_add_to_10(lst: list) -> int:
@@ -902,7 +929,7 @@ from myclasses import *
 # #     #return sum(x // 10 for x in (eval(f'{v[0]}+{v[-1]}') for v in map(str, map(abs, lst))) if x == 10)
 # #     return sum(int(str(abs(v))[0]) + int(str(abs(v))[-1]) == 10 for v in lst)
 
-# Моямодификация выше стоящей:
+# Моямодификация функции выше:
 #     return sum(eval(f"{x[0]} + {x[-1]}") == 10 for x in map(str, map(abs, a)))
 
 # # print(ends_add_to_10(a))
@@ -912,7 +939,7 @@ from myclasses import *
 #
 # def revers_str(string: str) -> str:
 #     """
-#     Создайте программу, которая размещает буквы тексте в алфавитном порядке.
+#     Функция размещает буквы тексте в алфавитном порядке.
 #     :param string: любая строка (желательно без цифр).
 #     :return: новая отсортированая строка с сохранением пробелов 'hello world -> dehll loorw'
 #     """
@@ -978,6 +1005,7 @@ from myclasses import *
 # my_sort_count(my_arr_a,my_arr_b)
 # end_time = datetime.now()
 # print(f"мой выполнено {end_time-start_time}")
+
 #####
 
 # #                             Создание словаря с помощью ZIP :
@@ -994,6 +1022,7 @@ from myclasses import *
 # def main(name):
 #     logger.warning(f"Enter in the main() func: name = {name}")
 
+# Массивы:
 from array import *
 
 def arra_exmp(n):
