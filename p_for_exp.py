@@ -785,7 +785,7 @@ import let as let
 #     """
 #     Шифр ROT13 относится к сокращенной форме Поворот на 13 мест . Это особый случай Цезаря Шифра, в котором сдвиг
 #     всегда равен 13 (по умолчанию). Каждая буква сдвигается на 13 мест, чтобы зашифровать сообщение.
-#     Расшифровка через отрицательное значение offset.
+#     Расшифровка через отрицательное значение offset. Необходим импорт string.
 #     :param text: строка
 #     :param offset: сдвиг
 #     :return: зашифрованная/расшифрованная строка
@@ -796,21 +796,25 @@ import let as let
 #####################
 
 # def permutations(string:str):
-#     from itertools import permutations
 #     """
-#     Выдаёт все возможные комбинации элементов.
+#     Выдаёт все возможные комбинации элементов. Необходим импорт itertools
 #     :param string: строка
 #     :return: список строк с комбирациями
 #     """
+#     from itertools import permutations
+#
 #     return [''.join(x) for x in permutations(string, r= None)]
+
 
 # def custom_permutations(string: str) -> list:
 #     """
 #     Выдаёт все возможные комбинации элементов. (альтернатива itertools permutations)
+#     Необходим импорт random
 #     :param string: строка
 #     :return: список строк с комбирациями
 #     """
 #     from random import shuffle
+
 #     lst_s = [x for x in string]
 #     res_l = []
 #     for _ in range(len(string) ** len(string)):
@@ -822,7 +826,7 @@ import let as let
 
 # def gimme_the_letters(span_let: str) -> str:
 #     """
-#     Строка из всех букв англиского алф. нужного диапазона.
+#     Строка из всех букв англиского алф. нужного диапазона. Необходим импорт string.
 #     :param span_let: строка,диапазон букв английского алфавита (н/р: "a-z")
 #     :return: возвращает строку из всех букв этого диапазона.
 #     """
@@ -831,6 +835,31 @@ import let as let
 
 ############
 
+# a = [input() for x in range(4)]
+# print(a)
+# b = [x.split() for x in a]
+# print(b)
+
+###############
+
+# def random_secure_string(len_pass: int = 10) -> str:
+#     """
+#     Генерация случайных паролей. Необходим импорт string и secrets.
+#     :param len_pass: длина пароля
+#     :return: пароль в виде строки
+#     """
+#     import string
+#     import secrets
+#     try:
+#         # securestr = ''.join((secrets.choice(string.ascii_letters + string.digits + string.punctuation) for i in range(len_pass)))
+#         # return securestr
+#
+#         # alphabet = string.ascii_letters + string.digits
+#         password = ''.join(secrets.choice(string.ascii_letters + string.digits) for i in range(len_pass))
+#         return password
+#     except TypeError:
+#         return "Password length must be a number!"
+
+##################
 
 
-if __name__ == '__main__':
