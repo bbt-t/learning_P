@@ -933,7 +933,7 @@ from myclasses import *
 #     return sum(eval(f"{x[0]} + {x[-1]}") == 10 for x in map(str, map(abs, a)))
 
 # # print(ends_add_to_10(a))
-########
+#################
 
 # a = 'hello world tt Privet pipkA m'
 #
@@ -951,7 +951,8 @@ from myclasses import *
 #         string_sort.insert(_, " ")
 #     return ''.join(string_sort)
 
-########
+#################
+
 # def is_prime_number(num: int) -> bool:
 #     """
 #     Проверка входящего числа на принадлежность к простому.
@@ -963,9 +964,13 @@ from myclasses import *
 #         if _ % 2 != 0:
 #             result.append(num % _ == 0)
 #     return sum(result) == 1
-#
-# print(is_prime_number(2))
-#####
+# ИЛИ:
+#     print(sum([num % _ == 0 for _ in range(num) if _%2 !=0])==1)
+
+
+
+
+#################
 
 
 #                       При обращении к несузествующему ключу вернётся None а не ошибка!

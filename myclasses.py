@@ -372,3 +372,14 @@ class Character_Exp_Hints:
 # print(some_obj_cl.static_attributes)
 # print(some_obj_cl.exp_i(99))
 # print(some_obj_cl.static_attributes)
+
+class MyDict(dict):
+    def __missing__(self, key):
+        self[key] = rval = []
+        return rval
+
+    def __str__(self):
+        return super().__str__()
+
+    __doc__ = ("Переобределили метод __missing__ в словарях, у несуществующего "
+               "ключа будет всегда знананениче [] (пустой список)")

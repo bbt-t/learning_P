@@ -1,3 +1,4 @@
+from myclasses import *
 # from contextlib import suppress
 # # from datetime import *
 # a = [1, ]
@@ -601,8 +602,8 @@ import let as let
 #     # return f"{days} {'дня(ей)' if days > 1 else 'день'}, {hours}:{minutes}:{sec}"
 #
 # print(to_readable(224930))
-#
-#####################
+
+####################
 
 # def string_to_lst(string: str) -> list:
 #     """
@@ -612,7 +613,7 @@ import let as let
 #     """
 #     return re.split(',', ''.join([x for x in string if not x.isspace()]))
 
-#####################
+####################
 
 # # Создание словаря:
 # a = dict(
@@ -620,12 +621,14 @@ import let as let
 #         (2,2),
 #         (3,3)]
 #         )
-##############
+
+#################
 
 #разделение для лучшей читаемости
 #print(3_000_000) -> 3000000
 
-##############
+#################
+
 # ВАЖНО ПОМНИТЬ ЧТО lambda ЭТО ФУНКЦИЯ!
 # def mult(x):
 #     return x ** m
@@ -639,7 +642,8 @@ import let as let
 # m = 1
 # #т.к map - это по сути генератор, он сохранил ранее ссылку на первое значение lst
 # print(*[x for x in map_res]) # -> 0 1 2 3 4 5
-##########
+
+##################
 
 # Сначала max потом min и далее среднее значение:
 # a,b,c = (input() for x in range(3))
@@ -650,14 +654,15 @@ import let as let
 # n = input()
 # print(f"{n} программист{'а' if 1 < int(n[-1]) < 5 else ('' if n[-1] == '1' else 'ов')}")
 
-#####
+################
+
 # Особенности оператора возведения в степень:
 # a,b = 2,3
 # c = a**b**a -->> # a** (b**a)
 # print(c) #--> 512
 
-#########
-#
+################
+
 # def to_one_dimension_list(lst: list) -> list:
 #     from collections.abc import Iterable
 #     """
@@ -677,9 +682,9 @@ import let as let
 #             else:
 #                 yield sublist
 #     return list(to_one())
-#
-# #####
-#
+
+###############
+
 # def to_one_dimension_list_2(lst: list) -> list:
 #     from collections.abc import Iterable
 #     """
@@ -692,9 +697,9 @@ import let as let
 #         return [x for sublist in lst for x in to_one_dimension_list(sublist)]
 #     else:
 #         return [lst]
-#
-# ####
-#
+
+##############
+
 # def to_one_dimension_list_3(lst):
 #     from collections.abc import Iterable
 #     """
@@ -758,7 +763,7 @@ import let as let
 # a = [1,2,3]
 # a.reverse() # как и reversed() НЕ изменяет существущий список, возвращает итератор!
 
-###########
+##############
 
 # def to_pairs(lst: list, fill_char: int = None) -> list:
 #     """
@@ -822,7 +827,7 @@ import let as let
 #         res_l.append(''.join(lst_s))
 #     return list(set(res_l))
 
-##############
+#################
 
 # def gimme_the_letters(span_let: str) -> str:
 #     """
@@ -833,14 +838,14 @@ import let as let
 #     ascii_l = string.ascii_letters
 #     return ascii_l[ascii_l.index(span_let[0]):ascii_l.index(span_let[-1]) + 1]
 
-############
+################
 
 # a = [input() for x in range(4)]
 # print(a)
 # b = [x.split() for x in a]
 # print(b)
 
-###############
+#################
 
 # def random_secure_string(len_pass: int = 10) -> str:
 #     """
@@ -860,6 +865,168 @@ import let as let
 #     except TypeError:
 #         return "Password length must be a number!"
 
+###################
+
+# СПИСОК1 + СПИСОК2 = СПИСОК1.extend(СПИСОК2) !!! Можно использовать такую замену методу для return в функциях ,
+# т.к и append() и extend() ничего не возвращают!
+# a = [1,2,3]
+# b = [4,5,6]
+# print(a+b) #-> [1, 2, 3, 4, 5, 6]
+# a = [1,2]
+# b = a + [3] # -> [1, 2, 3]
+
+####################
+
+# def modify_list(l: list):
+#     """
+#     Изменить список через функцию (которая ничего не возвращает) можно через полный срез [:]
+#     :param l: список
+#     :return: ничего, меняется сам входящий список
+#     """
+#     l[:]= [x // 2 for x in l if x % 2 == 0]
+
+# При этом срез необходим ТОЛЬКО в функции!!!
+# a = [1,2,3,4,5,6]
+# #a= list(filter(lambda x: x%2==0,a))
+# a = [x // 2 for x in a if x % 2 == 0]
+# print(a)
+
+####################
+
+#
+# from pytube import YouTube
+#
+# link = YouTube("https://www.youtube.com/watch?v=RaXV7Loe9Qw")
+# link.streams.filter(only_audio=True).order_by('abr').first().download()
+
+####################
+
+# def get_century(year: int) -> int:
+#     """
+#     Перевод года в век
+#     :param year: год
+#     :return: век
+#     """
+#     return (year - 1) // 100 + 1
+
+###################
+
+#dct = dict(a=2, b=3, c=10) -> {'a': 2, 'b': 3, 'c': 10}
+
+###################
+
+# def hamming_distance(string_1: str, string_2: str) -> int:
+#     """
+#     Вычисляет "расстояние Хэмминга" между 2мя строками.
+#     :param string_1: строка
+#     :param string_2: строка
+#     :return: число (int)
+#     """
+#     if len(string_1) == len(string_2):
+#         return sum(ch1 != ch2 for ch1, ch2 in zip(string_1, string_2))
+#     else:
+#         raise ValueError("Length of the args must be the same")
+
+###################
+
+# Интересное поведение оператора and :
+
+# a = 20
+# b = 5
+# print(b and a) # -> 20
+# print(a and b) # -> 5
+# Всегда будет выводиться последний элемент!
+###################
+
+# def lambda_inner_func(y):
+#     """
+#     lambda-выражение как альтернатива вложеной функции
+#     :param y: что-нибудь
+#     :return: что-нибудь
+#     """
+#     return lambda x: x + y
+#
+# print(lambda_inner_func([2,3])([4,5]))   # -> [4, 5, 2, 3]
+# print(lambda_inner_func([7,8])([10,20])) # -> [10, 20, 7, 8]
+
+####################
+
+# from typing import Union, Any
+#
+# def update_dictionary(dct: dict, k: Union[int, str, tuple], val: Any):
+#     """
+#     Принцип EAFP
+#     :param dct: словарь
+#     :param k: ключ
+#     :param val: значение
+#     :return: None
+#     """
+#     try:
+#         dct[k].append(val)
+#     except KeyError:
+#         try:
+#             dct[k * 2].append(val)
+#         except KeyError:
+#             dct[k * 2] = [val]
+
 ##################
+
+# Создали кастомный класс словаря:
+# md = MyDict()
+# md['somekey'].append(1)
+# print(md)
+# print(md.__doc__)
+
+###################
+
+# a1, b1, a2, b2 = (int(input()) for x in range(4))
+# def inters(a1, b1, a2, b2):
+#     """
+#     Пересечения двух "отрезков"
+#     :param a1: начало 1
+#     :param b1: конец 1
+#     :param a2: начало 2
+#     :param b2: конец 2
+#     :return: отрезок пересечения или строку
+#     """
+#     # создать 2 списка и сравнить их:
+#     # l_1, l_2 = [x for x in range(a1, b1 + 1)], [x for x in range(a2, b2 + 1)]
+#     # res = [x for x in l_1 for y in l_2 if x == y]
+#     # использовать только range() :
+#     #res = [x for x in range(a1,b1+1) if x in range(a2,b2+1)]
+#     #return 'Пустое множество' if not res else ((res[0],res[-1]) if len(res)>1 else res[0])
+#
+#     # ИЛИ испольовать set, что намного быстрее списков! :
+#     #res = set(range(a1, b1 + 1)) & set(range(a2, b2 + 1))
+#     #res = set(range(a1, b1 + 1)).intersection(range(a2, b2 + 1))
+#     return ('Пустое множество' if not (res := set(range(a1, b1 + 1)).intersection(range(a2, b2 + 1)))
+#             else ((min(res), max(res)) if len(res) > 1 else min(res)))
+
+##################
+
+# Лёгкий способ создать словарь:
+# a = [1,2,3]
+# b = [4,5,6]
+# dct = dict(zip(a,b))
+
+####################
+
+# Немного об отлове ошибок:
+
+# import sys
+# try:
+#     sys.exit()
+#     print("Программа ещё работает")
+# except BaseException as e:
+#     print(f"Сработала ошибка {type(e)}")
+# finally:
+#     print("finaly сработала")
+# Сработала ошибка <class 'SystemExit'>
+# finaly сработала
+
+# "Выход из программы" - считается тоже ошибкой (SystemExit), только уже родитель не Excepion (как для практически
+# всех ошибок),а BaseException (тут ещё KeyboardInterrupt и GeneratorExit). Смотри древо наследования классов ошикок!
+
+###################
 
 
