@@ -1,3 +1,5 @@
+import platform
+
 from myclasses import *
 # from contextlib import suppress
 # # from datetime import *
@@ -1029,4 +1031,157 @@ import let as let
 
 ###################
 
+# import collections.abc
+#
+#a = [[1,3,[2,4],50],1078,[5,6,7,[8,9,[10,101]]],9]
+#
+# def flatten(lst: list):
+#     """
+#     Рекурсия
+#     :param lst: вложеный список
+#     :return: одномерный список
+#     """
+#     for item in lst:
+#         try:
+#             yield from flatten(item)
+#         except TypeError:
+#             yield item
+#
+#
+# def genflat(lst: list):
+#     """
+#     Циклом в одномерный список
+#     :param lst: вложеный список
+#     :return: одномерный список
+#     """
+#     lst = list(lst)
+#     while lst:
+#         while lst and isinstance(lst[0], collections.abc.Sequence):
+#             lst[0:1] = lst[0]
+#         if lst:
+#             yield lst.pop(0)
+
+
+# from copy import deepcopy
+#
+# def flatten_gen(lst):
+#     """
+#     Циклом в одномерный список, приоритетный способ.
+#     :param lst:
+#     :return:
+#     """
+#     lst = deepcopy(lst)
+#     while lst:
+#         sublist = lst.pop(0)
+#         if isinstance(sublist, list):
+#             nested_list = sublist + lst
+#         else:
+#             yield sublist
+
+##################
+
+#Использование для проверки isinstance( , int) и .__class__ == int и type() == list это по сути одно и тоже
+
+# nan/NaN/Nan является ЧИСЛОМ с плавающей запятой (type(nan) -> <class 'float'>)!
+# и float('nan') НЕ ВЫЗОВЕТ ОШИБКИ ValueError !!!
+#x = float('nan')
+
+######################
+
+# def matrix_snail(n: int):
+#     """
+#     Выводит матрицу размером n x n значениями по спирали.
+#     :param n: целое число
+#     :return: влож.список
+#     """
+#     par_lst = [[0] * n for i in range(n)]   # или [[None] * n for i in range(n)]
+#     x, y, x_2, y_2 = 0, 0, 1, 0
+#     for v in range(n ** 2):
+#         par_lst[y][x] = v + 1
+#         test = x + x_2 if x_2 else y + y_2
+#         if test == n or par_lst[y + y_2][x + x_2] != 0:  # test < 0
+#             x_2, y_2 = -y_2, x_2
+#         x += x_2
+#         y += y_2
+#     for _ in range(n):
+#         print(*par_lst[_])
+
+#####################
+
+#Ключ True преобразовывается в 1 и заменяет его значение своим :
+# dct = {1:'PRESS F','1':'won',True:'yahoo'}
+# for k,v in dct.items():  #1 yahoo
+#     print(k, v)          #1 won
+
+#####################
+
+# import csv
+#
+# with open('123.txt', 'r') as infile, open('forEXP.csv', 'w') as outfile:
+#     stripped = (line.strip() for line in infile)
+#     lines = (line.split(",") for line in stripped if line)  # чтобы использовать запятую (,) в тексте и не
+#     # получить лишний "элемент" необходимо заключать его в двойные кавычки (н/р "9,2" или текст в разных строках)
+#     writer = csv.writer(outfile)  # у этого метода есть quoting (смотри доки)
+#     writer.writerows(lines)
+
+########################
+#Получение инфы о системе:
+# print(platform.system()) # название ОС
+# print(platform.platform()) # версия ОС
+# print(platform.processor()) # проц
+# print(platform.python_version())
+
+#print(*sorted([int(input()) for i in range(int(input()))],reverse=True)[:2],sep='_')
+#print([int(input()) for i in range(int(input()), int(input()))])
+
+###################
+
+# def reverse_letters(str_in: str) -> str:
+#     """
+#     Делает реверс только букв в строке.
+#     :param str_in: строка
+#     :return: новая строка
+#     """
+#     result = [ch for ch in str_in[::-1] if ch.isalpha()]
+#     for i, v in enumerate(str_in):
+#         ##if not v.isalpha(): result.insert(i, v)
+#         if not v.isalpha():
+#             result.insert(i, v)
+#     return ''.join(result)
+
+###################
+
+# def reverse_letters(user_str: str, letter_counter=-1) -> str:
+#     rev_let: list = [elem for elem in user_str if elem.isalpha()][::-1]
+#     res_string: str = ''
+#     for i in range(len(user_str)):
+#         if user_str[i].isalpha():
+#             res_string += rev_let[(letter_counter := letter_counter + 1)]
+#         else:
+#             res_string += user_str[i]
+#     return res_string
+
+#####################
+
+def bubble_sort(nums: list):
+    """
+    Сорторовка списка 'пузырьком'
+    :param nums: сортируемый список
+    :return: отсортированый список
+    """
+    # через рекурсию:
+    for i in range(len(nums) - 1):
+        if nums[i] > nums[i + 1]:
+            nums[i], nums[i + 1] = nums[i + 1], nums[i]
+            bubble_sort(nums)
+    # через цикл while:
+    # cycle = True
+    # while cycle:
+    #     cycle = False
+    #     for i in range(len(nums) - 1):
+    #         if nums[i] > nums[i + 1]:
+    #             nums[i], nums[i + 1] = nums[i + 1], nums[i]
+    #             cycle = True
+
+########################
 
