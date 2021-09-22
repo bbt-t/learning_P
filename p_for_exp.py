@@ -1185,3 +1185,124 @@ def bubble_sort(nums: list):
 
 ########################
 
+#import roman # из/в римские - арабские: (ну или ниже 3 функции)
+#print(roman.toRoman(int(input())))
+
+# def to_roman(number: int) -> str:
+#     """
+#     Из из арабских в римские
+#     :param number: число
+#     :return: римское  число
+#     """
+#     thous, century, ten, one = (
+#         ("", "M", "MM", "MMM", "MMMM"),
+#         ("", "C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM"),
+#         ("", "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC"),
+#         ("", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"),
+#     )
+#     return f"{thous[number // 1000]}{century[number // 100 % 10]}{ten[number // 10 % 10]}{one[number % 10]}"
+#
+# def to_roman(number: int) -> str:
+#     result: str = ''
+#     for arab, roman in zip((1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1),
+#                            ('M', 'CM', 'D', 'CD', 'C', 'XC', 'L', 'XL', 'X', 'IX', 'V', 'IV', 'I')):
+#         result += number // arab * roman
+#         number %= arab
+#     return result
+
+# def to_roman(num: int) -> str:
+#     arab_to_roman = {
+#         "1": ('I', 'X', 'C', 'M'),
+#         "2": ('II', 'XX', 'CC', 'MM'),
+#         "3": ('III', 'XXX', 'CCC', 'MMM'),
+#         "4": ('IV', 'XL', 'CD'),
+#         "5": ('V', 'L', 'D'),
+#         '6': ('VI', 'LX', 'DC'),
+#         "7": ('VII', 'LXX', 'DCC'),
+#         "8": ('VIII', 'LXXX', 'DCCC'),
+#         "9": ('IX', 'XC', 'CM'),
+#         "0": ('', '', '')
+#     }
+#     roman_num = ''
+#     for i, letter in enumerate(str(num)[::-1]):
+#         roman_num += arab_to_roman[letter][i]
+#     return roman_num[::-1]
+
+#########################
+
+# from itertools import compress,chain,combinations_with_replacement,filterfalse
+#
+# a = ['a','b','c','d']
+# b = [[11,50,101],[10,20]]
+# c = [1,2,3,4,5]
+#
+# print(list(compress(a,b)))
+# print(list(chain.from_iterable(b)))
+# print(list(combinations_with_replacement(a,3)))
+# print(list(filterfalse(lambda x: x<5, [1,4,6,1,4])))
+
+#####################################
+
+# ПАРАМЕТРИЧЕСКИЙ ПОЛИМОРФИЗМ :
+
+# Создание нескольких функций с ОДИНАКОВЫМ ИМЕНЕМ , но разными типами аргументов. Во время вызова функции будет выбрана
+# та её версия , которая подходит под тип передаваемого агрумента. Это "удобно" использовать если не знаем
+# какого типа аргумент будет передан!
+# Это работает только для 1го (первого) передаваемого агрумента!
+
+# from functools import singledispatch
+# @singledispatch
+# def custom_r(value):
+#     """
+#     декоратор из functools
+#     :param value:
+#     :return:
+#     """
+#     raise TypeError
+#
+# @custom_r.register(int)
+# def _(x): # или не узказывать агруемт (int) в декораторе и добавить аннотацию типа в саму функцию def _(x: int):
+#     """
+#     Имя функции не имеет знаничения!
+#     :param x:
+#     :return:
+#     """
+#     print('INT', x)
+#
+# @custom_r.register(float)
+# @custom_r.register(str)
+# def _(x):
+#     """
+#     Если одна функцию должна обрабатывать несколько типов
+#     :param x:
+#     :return:
+#     """
+#     print(f"{type(x).__name__.upper()}:", x)
+#
+# custom_r(1.2)
+# п.с: также есть декоратор (singledispatchmethod) для методов класса!
+
+##########################
+
+# Получить "голый" URL сайта из ссылки:
+# from urllib.parse import urlparse
+# o = urlparse('http://www.cwi.nl/%7Eguido/Python.html')
+# print(o.netloc)
+
+# ИЛИ:
+# import re
+# re.findall("([\w-]+?\.[\w\-\.]+).*", url)[0]
+
+# ИЛИ:
+# from itertools import takewhile
+# def get_domain(url: str):
+#     """
+#     Убрать лишнее из URL - адреса
+#     :param url: ссылка (url)
+#     :return: очишенная ссылка
+#     """
+#     return ''.join(takewhile(lambda x: x != '/', url.lstrip('https://www.')))
+#
+# print(get_domain("https://www.xakep.ru/page"))
+
+################################
