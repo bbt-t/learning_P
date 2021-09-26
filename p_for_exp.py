@@ -1,3 +1,4 @@
+import math
 import platform
 
 from myclasses import *
@@ -167,11 +168,14 @@ from myclasses import *
 # def sort_by_count(arr1,arr2):
 #     arr1.sort(key=lambda x: arr2.count(x), reverse=True)
 #     return arr1
-####
+################
 #               Из римских цифр в арабские и наоборот:
 # import roman
 # def roman_to_int(num_r:str) -> int:
 #     return roman.fromRoman(num_r)
+
+###################
+
 # from functools import wraps
 # #Создаём декоратор
 # def dec_examples(func):
@@ -393,10 +397,6 @@ from myclasses import *
 #        Валидатор: Дескриптор
 #import collections
 #import itertools
-import string
-
-import let as let
-
 
 # class ValidSting:
 #     def __set_name__(self, owner, property_name):
@@ -1243,7 +1243,7 @@ def bubble_sort(nums: list):
 
 #####################################
 
-# ПАРАМЕТРИЧЕСКИЙ ПОЛИМОРФИЗМ :
+# ПАРАМЕТРИЧЕСКИЙ ПОЛИМОРФИЗМ (множественная диспетчеризация / перегрузка):
 
 # Создание нескольких функций с ОДИНАКОВЫМ ИМЕНЕМ , но разными типами аргументов. Во время вызова функции будет выбрана
 # та её версия , которая подходит под тип передаваемого агрумента. Это "удобно" использовать если не знаем
@@ -1301,8 +1301,55 @@ def bubble_sort(nums: list):
 #     :param url: ссылка (url)
 #     :return: очишенная ссылка
 #     """
-#     return ''.join(takewhile(lambda x: x != '/', url.lstrip('https://www.')))
+#     for _ in ('https://', 'http://', 'ftp://', 'www.'): url = url.removeprefix(_)
+#     return ''.join(takewhile(lambda x: x != '/', url))
 #
 # print(get_domain("https://www.xakep.ru/page"))
 
 ################################
+
+# # Бесконечное число:
+#
+# import math
+# a = math.inf
+# print(type(a)) # -> float
+#
+# import itertools
+# a = itertools.count(1)
+# print(type(a)) # -> интератор с int - значениями
+
+##############################
+
+# str_in,f_str = [[input() for x in range(int(input()))] for _ in range(2)]
+# # for item in string_in:
+# #     if all(x.lower() in item.lower() for x in f_str):
+# #         print(item)
+# print(*(i for i in str_in if all(x.lower() in i.lower() for x in f_str)), sep='\n')
+
+########################
+
+# def is_triangle(lst: list) -> bool:
+#     """
+#     Проверяет, существует ли треугольник или нет
+#     :param lst: 3 стороны
+#     :return: да/нет
+#     """
+#     a, b, c = lst
+#     return (a + b > c) and (a + c > b) and (b + c > a)
+# или (приоритетней)
+# def is_triangle(lst: list) -> bool:
+#     lst = lst[:]
+#     return lst.pop(lst.index(max(lst))) <= sum(lst)
+
+###########################
+
+# Особенности математических операций:
+# a = 10
+# b = 5
+# print(a//b * a / b) #-> 4.0
+# print((a//b * a) / b) #-> 4.0
+#
+# print((a * b // a) * b)
+
+#################
+
