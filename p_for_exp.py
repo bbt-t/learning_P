@@ -1163,17 +1163,17 @@ from myclasses import *
 
 #####################
 
-def bubble_sort(nums: list):
-    """
-    Сорторовка списка 'пузырьком'
-    :param nums: сортируемый список
-    :return: отсортированый список
-    """
-    # через рекурсию:
-    for i in range(len(nums) - 1):
-        if nums[i] > nums[i + 1]:
-            nums[i], nums[i + 1] = nums[i + 1], nums[i]
-            bubble_sort(nums)
+# def bubble_sort(nums: list):
+#     """
+#     Сорторовка списка 'пузырьком'
+#     :param nums: сортируемый список
+#     :return: отсортированый список
+#     """
+#     # через рекурсию:
+#     for i in range(len(nums) - 1):
+#         if nums[i] > nums[i + 1]:
+#             nums[i], nums[i + 1] = nums[i + 1], nums[i]
+#             bubble_sort(nums)
     # через цикл while:
     # cycle = True
     # while cycle:
@@ -1352,4 +1352,129 @@ def bubble_sort(nums: list):
 # print((a * b // a) * b)
 
 #################
+
+# a = 10
+# b = a/2
+# import sys
+# try:
+#     for _ in range(3):
+#         if _ > 1:
+#             print('TRY')
+#             sys.exit() # а break НЕ вызывает ошибку SystemExit (родитель BaseException)!!!
+# except BaseException as e:
+#     print('EXPT', type(e))
+# else:
+#     print('ELS') # Вызывается только если не возникло никаких ошибок!
+# finally:
+#     print('FNLY') # Вызывается всегда!
+
+####################
+
+# data = ''
+# while (str_in := input()):
+#     if '#' in str_in:
+#         str_in = str_in[:str_in.index('#')].rstrip()
+#     data += str_in+'\n'
+# print(data[1:])
+
+###################
+
+# data = ''
+# i = -1
+# for _ in range(n):
+#     str_in = inp[(i:=i+1)]
+#     if '#' in str_in:
+#         str_in = str_in[:str_in.index('#')].rstrip()
+#     data += str_in+'\n'
+# print(f'\n{data[1:]}')
+
+#########################
+
+# from itertools import combinations
+# def two_sum(lst: list, n: int):
+# Не норм решение:
+#     return [lst.index(i) for i in next(x for x in combinations(lst, 2) if sum(x) == n)]
+# Норм решение:
+#     return [i for i,v in enumerate(lst) if n - v in lst]
+
+##########################
+
+# Примеры создания различных списков
+import itertools
+import more_itertools
+# a = [1,2,3]
+# b = [4,5,6]
+
+# print(list(itertools.product(a,b))) # [(1, 4), (1, 5), (1, 6), (2, 4), (2, 5), (2, 6), (3, 4), (3, 5), (3, 6)]
+# print(list(zip(a,b)))               # [(1, 4), (2, 5), (3, 6)]
+# print(list(itertools.chain(a,b)))   # [1, 2, 3, 4, 5, 6]
+
+
+# Яракий пример проблемы float-вычислений :
+# print(round(2.85,1)) # 2.9
+# print(round(2.65,1)) # 2.6
+# Что противоречит правилу округления функцией round() float-числа до "ближайшего чётного" если дроб.часть >=0.5!
+
+###########################
+
+# my_list = [('a', 1), ('c', 2), ('e', 3)]
+#
+# transposed_list = zip(*my_list)
+# print(list(transposed_list)) # -> [('a', 'c', 'e'), (1, 2, 3)]
+#
+# # В принипе zip(*my_list) и more_itertools.unzip(my_list) одно итоже!
+#
+# letters, numbers = more_itertools.unzip(my_list) # -> 2 map object
+# print(list(letters)) # -> ['a', 'c', 'e']
+# print(list(numbers)) # -> [1, 2, 3]
+
+################################
+
+# a = 'aab'
+# b = 'aba'
+
+# def is_one_away(string_1: str, string_2: str) -> bool:
+#     """
+#     Сравнивает две строки (Степик)
+#     :param string_1: строка
+#     :param string_2: строка
+#     :return: True, если они отличаются на одну букву, False в противном случае.
+#     """
+#     return sum(s != f for s, f in zip(string_1, string_2)) == 1
+
+###################
+
+# Интересное поведение пустого вложенного списка:
+
+# a = [[]]*3
+# a[1].append(1)
+# print(a) # -> [[1], [1], [1]]
+
+#####################
+
+# from string import ascii_lowercase,ascii_uppercase,digits
+# def is_password_good(passoword):
+#     return len(passoword) >= 8 and all(ch in ascii_uppercase or ch in ascii_lowercase or ch in digits for ch in passoword)
+#
+
+# def is_password_good(passoword):
+#     return len(passoword) >= 8 and sum((any(filter(x,passoword)) for x in (str.isupper, str.islower,str.isnumeric))) == 3
+#
+# print(is_password_good('aabbCC11OP'))
+# print(is_password_good('abC1pu'))
+# print(is_password_good('12314124124141'))
+
+########################
+
+# def move_zeroes(lst: list):
+#     """
+#     Нули вправо.
+#     :param lst: список
+#     :return: изменяется переданный список
+#     """
+#     # lst[:] = [x for x in lst if x > 0] + [0] * lst.count(0)
+#     for _ in range(lst.count(0)):
+#         lst.append(lst.pop(lst.index(0)))
+# move_zeroes(b)
+# print(b)
 
