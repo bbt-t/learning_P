@@ -1400,8 +1400,8 @@ from myclasses import *
 ##########################
 
 # Примеры создания различных списков
-import itertools
-import more_itertools
+# import itertools
+# import more_itertools
 # a = [1,2,3]
 # b = [4,5,6]
 
@@ -1466,6 +1466,8 @@ import more_itertools
 
 ########################
 
+#nums = [0, 1, 0, 3, 12]
+
 # def move_zeroes(lst: list):
 #     """
 #     Нули вправо.
@@ -1475,6 +1477,128 @@ import more_itertools
 #     # lst[:] = [x for x in lst if x > 0] + [0] * lst.count(0)
 #     for _ in range(lst.count(0)):
 #         lst.append(lst.pop(lst.index(0)))
-# move_zeroes(b)
-# print(b)
+# move_zeroes(a)
+# print(a)
+
+###########################
+
+# класс-декоратор может несолько раз вызвать функцию
+#from functools import wraps
+
+# class Example_d:
+#     __slots__ = ("count_method",)
+#     def __init__(self, count_method=1):
+#         self.count_method = count_method
+#     def __call__(self, func):
+#         @wraps(func)
+#         def wrapper(*args):
+#             for _ in range(self.count_method):
+#                 func(*args)
+#         return wrapper
+# или
+# import functools
+# def repeater(repeat=1):
+#     """Повторение выполнения кода"""
+#     def decorator(func):
+#         @functools.wraps(func)
+#         def wrapper(*args, **kwargs):
+#             for i in range(repeat):
+#                 print(f'{i+1}: ', end='')
+#                 val = func(*args, **kwargs)
+#             return val
+#         return wrapper
+#     return decorator
+
+##########################
+
+# a = []
+# a.append('ab') # -> ['ab']
+# a.extend('cde') # -> ['c', 'd', 'e']
+
+#####################
+
+# from typing import NewType
+# from beartype import beartype
+# MatrixType = list[list[int]]
+# MatrixType = NewType('MatrixType', list[list[int]])
+
+#########################
+
+# import dis
+#
+# def func(a,b):
+#     c = a+b
+#     print(c)
+#
+# dis.dis(func)
+
+######################
+
+# def rev_func(inp):
+#     res:list = []
+#     for i, v in enumerate(inp, 1):
+#         if ''.join(let for let in 'anton' if x in v ) == 'anton':
+#             res.extend((str(i), " "))
+#     return ''.join(res)
+
+# def increment_string(string_in: str):
+#     n:list = [v for v in string_in[::-1] if v.isnumeric() and v != '0']
+#     try:
+#         return f"{string_in[:-(len(n))]}{int(''.join(n[::-1])) + 1}"
+#     except:
+#         return f"{string_in}1"
+#
+# print(increment_string('f0o999'))
+
+#############################
+
+# Поиск слова "anton" в последовательности:
+
+# import re
+# inp:list = [input() for x in range(int(input()))]
+# for i, v in enumerate(inp, 1):
+#     if re.search(r'.*a.*n.*t.*o.*n', v): # Поиск последовательности (anton) в строке н/р: "a1n1t1o1n1"
+#         print(i, end=' ')
+
+#########################
+
+#from itertools import takewhile
+
+# def same_length(n: int) -> bool:
+#     """
+#     В переданном числе за каждой последовательностью единиц следует последовательность нулей той же длины.
+#     :param n: число
+#     :return: BOOL
+#     """
+#     n: str = str(n)
+#     while n and 'stop' not in n:
+#         n = n[(units:=len(list(takewhile(lambda x: x == '1', n)))):]
+#         n = n[zeros:] if units == (zeros:=len(list(takewhile(lambda x: x == '0', n)))) else 'stop'
+#     return not n
+#
+# print(same_length(101010110))
+
+######################
+
+# def dup_count(inp_str: str) -> int:
+#     return sum({let: inp_str.lower().count(let) > 1 for let in inp_str}.values())
+# или
+    # count_items: dict = {}
+    # for let in inp_str:
+    #     if let not in count_items and (n := inp_str.count(let) > 1):
+    #         count_items[let] = n
+    # return len(count_items)
+# или
+    # count_items: list = []
+    # for items in n:
+    #     if n.count(items) > 2:
+    #         count_items.append(n.count(items))
+    # return len(count_items)
+# или
+# def dup_count(string: str) -> int:
+#     sort_el:list = sorted(string.lower())
+#     return len({sort_el[i] for i in range(len(sort_el) - 1) if sort_el[i] == sort_el[i + 1]})
+#print(dup_count('abcde'))
+
+#######################
 
