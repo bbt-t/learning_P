@@ -1,5 +1,6 @@
 import math
 import platform
+import string
 
 from myclasses import *
 # from contextlib import suppress
@@ -1535,14 +1536,14 @@ from myclasses import *
 ######################
 
 # def rev_func(inp):
-#     res:list = []
+#     res: list = []
 #     for i, v in enumerate(inp, 1):
 #         if ''.join(let for let in 'anton' if x in v ) == 'anton':
 #             res.extend((str(i), " "))
 #     return ''.join(res)
 
 # def increment_string(string_in: str):
-#     n:list = [v for v in string_in[::-1] if v.isnumeric() and v != '0']
+#     n: list = [v for v in string_in[::-1] if v.isnumeric() and v != '0']
 #     try:
 #         return f"{string_in[:-(len(n))]}{int(''.join(n[::-1])) + 1}"
 #     except:
@@ -1596,9 +1597,98 @@ from myclasses import *
     # return len(count_items)
 # или
 # def dup_count(string: str) -> int:
-#     sort_el:list = sorted(string.lower())
+#     sort_el: list = sorted(string.lower())
 #     return len({sort_el[i] for i in range(len(sort_el) - 1) if sort_el[i] == sort_el[i + 1]})
 #print(dup_count('abcde'))
 
 #######################
 
+# Редактируем видео с помощью бибилотеки moviepy
+# н/р взять аудиодорожку из видео:
+# import  moviepy.editor
+# video = moviepy.editor.VideoFileClip("имя.mov")
+# audio = video.audio
+# audio.write_audiofile('имя.mp3')
+
+#########################
+
+# # Выводим "красивые" таблицы прямо в терминал  с помощью библиотеки prettytable :
+# from prettytable import PrettyTable
+#
+# table = PrettyTable()
+#
+# table.field_names: list = ["имена","столбцов"]
+#
+# table.add_row(['записываем','строки'])
+# table.add_row(['записываем','другие_строки'])
+# table.add_row(['записываем','ещё_строки'])
+#
+# # ровняем по выбранному краю:
+# table.align = 'r'
+# # можно указать соритровку:
+# table.sortby = 'столбцов'
+#
+# print(table)
+# # Смотри ещё больше функций в документации!
+
+#####################################
+
+# from typing import Union
+# lst: list = [-1, 2, 3, 4]
+#
+# def add_one(lst: Union[int,str]) -> list:
+#   """
+#   В списка (который являются одним числом) необходимо добавить (к этому числу) 1
+#   :param lst: принимает список из цифр (не только из цифр)
+#   :return: возвращает список из цифр
+#   """
+#   res: str = str(int(''.join(map(str, lst))) + 1)
+#   return [int(x) for x in res] if res.isnumeric() else [-int(res[1])] + [int(x) for x in res[2:]]
+#
+# print(add_one(lst))
+
+######################################
+
+# def harry(matrix_inp: List[List[int]]):
+#     """
+#     Гарри — почтальон. У него есть почтовый участок размером n * m (матричный / 2D-список).
+#     Каждый слот в 2D-списке представляет количество писем в этом месте.Гарри может идти только вправо и вниз.
+#     Он начинает обход в (0, 0) и заканчивает в (n-1, m-1). n представляет высоту, а m — длину матрицы.
+#     Письма Гарри может брать только там, где находится.
+#     :param matrix_inp: двумерный список из чисел
+#     :return: сумма елементов, в соответствии с заданием
+#     """
+#     if not sum(matrix_inp, []):
+#         return -1
+#     max_value: tuple = max([(i, sum(item)) for i, item in enumerate(matrix_inp)][::-1], key=lambda x: x[1])
+#     return sum((x[0] for x in matrix_inp[:max_value[0]]), max_value[1])
+#
+#
+# print(harry([[]]))
+# print(harry([
+#   [1, 2, 3, 4, 5],
+#   [6, 7, 8, 9, 10],
+#   [11, 12, 13, 14, 15]
+# ]))
+# print(harry([[5, 2],
+#              [5, 2]]))
+
+# from itertools import accumulate
+
+# from typing import TypeAlias
+# mytype: TypeAlias = list[int] #вместо NewType
+
+# MatrixType: TypeAlias = list[list[int]]
+#
+# def harry(mtrx_inp: MatrixType) -> int:
+#     if not sum(mtrx_inp, []):
+#         return -1
+#     mtrx_inp: list = mtrx_inp[:]
+#     mtrx_inp[0] = list(accumulate(mtrx_inp[0]))
+#     for y in range(1, m := len(mtrx_inp)):
+#         mtrx_inp[y][0] += mtrx_inp[y - 1][0]
+#         for x in range(1, n := len(mtrx_inp[0])):
+#             mtrx_inp[y][x] = max(mtrx_inp[y - 1][x], mtrx_inp[y][x - 1]) + mtrx_inp[y][x]
+#     return mtrx_inp[m - 1][n - 1]
+
+##################################
