@@ -1,8 +1,3 @@
-import math
-import platform
-import string
-
-from myclasses import *
 # from contextlib import suppress
 # # from datetime import *
 # a = [1, ]
@@ -1692,3 +1687,216 @@ from myclasses import *
 #     return mtrx_inp[m - 1][n - 1]
 
 ##################################
+
+# import re
+# email = 'yas.dasc@12312@yaco'
+# if not re.match(r"[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+", email):
+#     print('NO!')
+# else:
+#     print('OK!')
+
+#################################
+
+#print('123' '456')
+
+################################
+
+# import math
+# def persist1(num: int):
+#     while num > 9:
+#         num: int = math.prod(map(int, str(num)))
+#     return num
+#print(persist(999))
+
+########################
+
+# a = 123_567_234
+#
+# print(f"{a:,}")
+
+################################
+
+# from string import punctuation as pu
+#
+# def gen_hashtag(str_inp: str):
+#     res = f"#{''.join(x for x in str_inp if x not in pu).title().replace(' ', '')}"
+#     if len(res) > 140:
+#         raise ValueError
+#     return res
+#
+# print(gen_hashtag("python is't a community"))
+
+######################################
+
+# def find_outlier(lst: list):
+#     res_l: list = [x % 2 for x in lst]
+#     return lst[res_l.index(0)] if sum(res_l)-1 else lst[res_l.index(1)]
+#
+#
+# print(find_outlier([2, 4, 0, 4, 11, 36])) #-> 11
+# print(find_outlier([160, 3, 19, 11, -21])) #-> 160
+# print(find_outlier([-1, 1, 3, 3, 2, -11, -21])) #-> 2
+
+###################################
+
+# a, *b, c = 'No bees', 'no honey'
+# print(b) # -> []
+
+#################################
+
+# def check_var_name(check_str: str):
+#     #from string import ascii_letters, digits
+#     from keyword import kwlist as kw
+#     #a_char: str = ascii_letters + digits + '_'
+#     #return check_str not in kw and all(let in a_char for let in check_str)
+#
+#     return not any((check_str in kw, check_str[0].isnumeric())) and check_str.replace('_', '').isalnum()
+#
+# print(check_var_name('0wrong'))
+
+#################################
+import itertools
+from pprint import pprint
+#from copy import deepcopy
+
+
+# from contextlib import suppress
+#
+#
+# def num_grid(matrx: list) -> list:
+#     """
+#     Ненавижу матрицы! Следующую задачу ПЛЗ без них...
+#     :param matrx: двумарный список
+#     :return: бум
+#     """
+#     SUP = suppress(TypeError)
+#     matrx: list = deepcopy(matrx)
+#     for item in matrx:
+#         for i, val in enumerate(item):
+#             if val != '#':
+#                 item[i] = 0
+#
+#     def inner_func(index: int, i: int, v: int):
+#         if 0 <= i + index <= 4:
+#             with SUP: matrx[i + index][v] += 1
+#             if v + 1 <= 4:
+#                 with SUP: matrx[i + index][v + 1] += 1
+#             if v - 1 >= 0:
+#                 with suppress(TypeError): matrx[i + index][v - 1] += 1
+#
+#     for i, item in enumerate(matrx):
+#         for v, t in enumerate(item):
+#             if t == '#':
+#                 if v + 1 < 5 and v - 1 >= 0:
+#                     with SUP: matrx[i][v - 1] += 1
+#                     with SUP: matrx[i][v + 1] += 1
+#                 inner_func(-1, i, v)
+#                 inner_func(1, i, v)
+#     pprint(matrx)
+# #
+# num_grid([
+#   [0, 0, 0, '#', '#'],  # [«1», «1», «2», «#», «#»] ok!
+#   [0, '#', 0, 0, 0],  # [«1», «#», «3», «3», «2»] ok!
+#   [0, 0, '#', 0, 0],  # [«2», «4», «#», «2», «0»] OK!
+#   [0, '#', '#', 0, 0],  # [«1», «#», «#», «2», «0»] ok!
+#   [0, 0, 0, 0, 0]   # [«1», «2», «2», «1», «0»] WRONG!
+# ])
+
+# num_grid([
+#   ['-', '-', '-', '#', '#'],  # [«1», «1», «2», «#», «#»] ok!
+#   ['-', '#', '-', '-', '-'],  # [«1», «#», «3», «3», «2»] ok!
+#   ['-', '-', '#', '-', '-'],  # [«2», «4», «#», «2», «0»] OK!
+#   ['-', '#', '#', '-', '-'],  # [«1», «#», «#», «2», «0»] ok!
+#   ['-', '-', '-', '-', '-']   # [«1», «2», «2», «1», «0»] WRONG!
+# ])
+
+
+
+# def inner_func(index: int, i: int, v: int):
+#     if 0 <= i + index <= 4:
+#         if isinstance(matrx[i + index][v], int): matrx[i + index][v] += 1
+#         if v + 1 <= 4 and isinstance(matrx[i + index][v + 1], int):
+#             matrx[i + index][v + 1] += 1
+#         if v - 1 >= 0 and isinstance(matrx[i + index][v - 1], int):
+#             matrx[i + index][v - 1] += 1
+#
+#
+# for i, item in enumerate(matrx):
+#     for v, t in enumerate(item):
+#         if t == '#':
+#             if v + 1 <= 4 and v - 1 >= 0:
+#                 if isinstance(matrx[i][v - 1], int): matrx[i][v - 1] += 1
+#                 if isinstance(matrx[i][v + 1], int): matrx[i][v + 1] += 1
+#             inner_func(-1, i, v)
+#             inner_func(1, i, v)
+#
+# return matrx
+
+
+#######################
+
+# import re
+#
+# a = 'abc'
+# b = 'd'
+# result = [x.start() for x in re.finditer(b, a)]
+
+#########################
+
+# import requests
+#
+# r = requests.get('https://ubima.ru')
+#
+# with open('ubima.html', 'w') as f:
+#     f.write(r.text)
+
+##########################
+# from datetime import datetime
+# from collections import deque
+#
+#
+# def reverse(num: int):
+#     res = deque(str(num))
+#     res.reverse()
+#     if num < 0:
+#         res.rotate()
+#     return int(''.join(res))
+#
+#
+# def reverse2(num: int):
+#     return int(''.join(reversed(str(num)))) if num > 0 else -int(''.join(reversed(str(num)[1:])))
+# #
+# def reverse1(num):
+#     """
+#     САМОЕ МЕДЛЕННОЕ РЕШЕНИЕ!
+#     :param num:
+#     :return:
+#     """
+#     r = 0
+#     sign = num // abs(num)
+#     num = abs(num)
+#     while num != 0:
+#         r *= 10
+#         r += num % 10
+#         num //= 10
+#     return r * sign
+#
+#
+# stat = datetime.now()
+#
+# print(reverse(10*10**2000))
+# end = datetime.now()
+# res = end - stat
+# print(f"Дека {res}")
+# stat = datetime.now()
+# print(reverse1(10*10**2000))
+# end = datetime.now()
+# res = end - stat
+# print(f"Числом {res}")
+# stat = datetime.now()
+# print(reverse2(10*10**2000))
+# end = datetime.now()
+# res = end - stat
+# print(f"Однострочник {res}")
+
+##########################
