@@ -1755,8 +1755,8 @@
 # print(check_var_name('0wrong'))
 
 #################################
-import itertools
-from pprint import pprint
+# import itertools
+# from pprint import pprint
 #from copy import deepcopy
 
 
@@ -1832,8 +1832,7 @@ from pprint import pprint
 #
 # return matrx
 
-
-#######################
+##########################
 
 # import re
 #
@@ -1851,6 +1850,7 @@ from pprint import pprint
 #     f.write(r.text)
 
 ##########################
+
 # from datetime import datetime
 # from collections import deque
 #
@@ -1900,3 +1900,106 @@ from pprint import pprint
 # print(f"Однострочник {res}")
 
 ##########################
+
+# def translator(str_inp: str, CONST: str = 'двуликий') -> str:
+#     """
+#     8 задача марафона
+#     :return: изменённая строка по условию задачи
+#     """
+#     bin_l: list = [bin(x) for x in bytearray(str_inp.encode('utf-8'))]
+#     res: str = ' '.join(''.join(map(lambda x, y: x.upper() if int(y) else x, CONST, bin_l[_])) for _ in range(len(bin_l)))
+
+#     return res
+#
+# print(translator("Hi"))# "дВулИкий дВУлИкиЙ"
+# print(translator("123")) # "двУЛикиЙ двУЛикИй двУЛикИЙ"
+
+###########################
+
+# from itertools import chain
+
+# def valid_bracket(s_inp: str):
+#     CONST: tuple = (('(', ')'), ('[', ']'), ('{', '}'), ('<', '>'))
+
+#     res: list = [x for x in s_inp if x in chain.from_iterable(CONST)]
+#     if len(res) % 2:
+#         return False
+#     return all(res.index(x) + 1 == abs(res.index(y) - len(res)) for x, y in CONST if x in res and y in res)
+#
+# print(valid_bracket("([])"))
+#
+#
+# def is_anagram(word1, word2) :
+#     temp: list = list(word1)
+#     try:
+#         return bool([temp.pop(temp.index(char)) for char in word2])
+#     except ValueError:
+#         return False
+#
+# print(is_anagram('anagrama', 'nagaramm'))
+
+###########################
+
+# from itertools import takewhile
+#
+# def longest_prefix(lst: list) -> str:
+#     return lst[0][:sum(takewhile(int, (len(set(x)) == 1 for x in zip(*lst))))]
+#
+# print(longest_prefix(['flower', 'flow', 'flight']))
+# print(longest_prefix(['sol', 'ution']))
+# print(longest_prefix(['car', 'cir']) )
+
+##########################
+
+# def can_exit(matrx: list[list]) -> bool:
+#     """
+#     10я задача
+#     :param matrx:
+#     :return:
+#     """
+#     if matrx[-1][-1] != 0:
+#         return False
+#     i_zero = []
+#     for j,item in enumerate(matrx):
+#         i_zero.append([])
+#         for i, val in enumerate(item):
+#             if val == 0:
+#                 i_zero[j].append(i)
+#
+#     result = [[x for x in i_zero[i] if x in i_zero[i+1]] for i in range(len(i_zero)-1)]
+#     return all(num in i_zero[-1] for num in range(result[-1][-1], 7))
+#
+#
+# print(can_exit([
+#   [0, 1, 1, 1, 1, 1, 1],
+#   [0, 0, 1, 1, 0, 1, 1],
+#   [1, 0, 0, 0, 0, 1, 1],
+#   [1, 1, 1, 1, 0, 0, 1],
+#   [1, 1, 1, 1, 1, 0, 0]
+# ]))
+#
+# print(can_exit([
+#   [0, 1, 1, 1, 1, 1, 1],
+#   [0, 0, 1, 0, 0, 1, 1],
+#   [1, 0, 0, 1, 0, 1, 1],
+#   [1, 1, 0, 1, 0, 0, 1],
+#   [1, 1, 0, 0, 1, 1, 0]
+# ]))
+#
+# print(can_exit([
+#   [0, 1, 1, 1, 1, 0, 0],
+#   [0, 0, 0, 0, 1, 0, 0],
+#   [1, 1, 1, 0, 0, 0, 0],
+#   [1, 1, 1, 1, 1, 1, 0],
+#   [1, 1, 1, 1, 1, 1, 1]
+# ]))
+#
+# print(can_exit([
+#   [0, 1, 1, 1, 1, 0, 0],
+#   [0, 0, 0, 0, 1, 0, 0],
+#   [1, 1, 1, 0, 0, 0, 0],
+#   [1, 0, 0, 0, 1, 1, 0],
+#   [1, 1, 1, 1, 1, 1, 0]
+# ]))
+
+############################
