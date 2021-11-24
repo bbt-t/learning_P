@@ -336,7 +336,7 @@
 # time_z_b = datetime.datetime.now(pytz.timezone("Europe/Berlin"))
 # print(time_now,timezone,time_z_b, sep='\n')
 #
-#Лучше всего писать так:
+# Лучше всего писать так:
 # timezone = pytz.timezone('Europe/Moscow')
 # time_now = timezone.localize(datetime.datetime.now()) # это,так называемое, "осведомлённое"
 # время (знает зону)
@@ -391,8 +391,8 @@
 ###########
 
 #        Валидатор: Дескриптор
-#import collections
-#import itertools
+# import collections
+# import itertools
 
 # class ValidSting:
 #     def __set_name__(self, owner, property_name):
@@ -453,7 +453,7 @@
 # datac_obj_2 = MyDataClass([1, 4, 6], 21)
 # print(datac_obj_2 > datac_obj) #-> True т. будет 21,1 > 8,1
 
-#datac_obj.x = 33 --> dataclasses.FrozenInstanceError: cannot assign to field 'x'
+# datac_obj.x = 33 --> dataclasses.FrozenInstanceError: cannot assign to field 'x'
 
 
 ###########
@@ -622,8 +622,8 @@
 
 #################
 
-#разделение для лучшей читаемости
-#print(3_000_000) -> 3000000
+# разделение для лучшей читаемости
+# print(3_000_000) -> 3000000
 
 #################
 
@@ -733,8 +733,8 @@
 #         else:
 #             print(l, end=' ')
 
-#pp = [[i * j for j in a] for i in b]
-#result = zip(b,pp)
+# pp = [[i * j for j in a] for i in b]
+# result = zip(b,pp)
 
 ##################
 
@@ -776,11 +776,11 @@
 #         inner_l.append(fill_char)
 #     return [inner_l[v:v + 2] for v in range(0, len(inner_l), 2)]
 
- #ИЛИ: блок if здесь уже не нужен ! т.к используется zip() !
-    # inner_l= lst[:] + [fill_char]
-    # return [list(x) for x in zip(inner_l[::2], inner_l[1::2])]
-    # или с моржом:
-    # return [list(x) for x in zip((inner_l:= lst[:] + [fill_char])[::2], inner_l[1::2])]
+# ИЛИ: блок if здесь уже не нужен ! т.к используется zip() !
+# inner_l= lst[:] + [fill_char]
+# return [list(x) for x in zip(inner_l[::2], inner_l[1::2])]
+# или с моржом:
+# return [list(x) for x in zip((inner_l:= lst[:] + [fill_char])[::2], inner_l[1::2])]
 
 ############
 
@@ -909,7 +909,7 @@
 
 ###################
 
-#dct = dict(a=2, b=3, c=10) -> {'a': 2, 'b': 3, 'c': 10}
+# dct = dict(a=2, b=3, c=10) -> {'a': 2, 'b': 3, 'c': 10}
 
 ###################
 
@@ -1029,7 +1029,7 @@
 
 # import collections.abc
 #
-#a = [[1,3,[2,4],50],1078,[5,6,7,[8,9,[10,101]]],9]
+# a = [[1,3,[2,4],50],1078,[5,6,7,[8,9,[10,101]]],9]
 #
 # def flatten(lst: list):
 #     """
@@ -1076,11 +1076,11 @@
 
 ##################
 
-#Использование для проверки isinstance( , int) и .__class__ == int и type() == list это по сути одно и тоже
+# Использование для проверки isinstance( , int) и .__class__ == int и type() == list это по сути одно и тоже
 
 # nan/NaN/Nan является ЧИСЛОМ с плавающей запятой (type(nan) -> <class 'float'>)!
 # и float('nan') НЕ ВЫЗОВЕТ ОШИБКИ ValueError !!!
-#x = float('nan')
+# x = float('nan')
 
 ######################
 
@@ -1104,7 +1104,7 @@
 
 #####################
 
-#Ключ True преобразовывается в 1 и заменяет его значение своим :
+# Ключ True преобразовывается в 1 и заменяет его значение своим :
 # dct = {1:'PRESS F','1':'won',True:'yahoo'}
 # for k,v in dct.items():  #1 yahoo
 #     print(k, v)          #1 won
@@ -1121,14 +1121,14 @@
 #     writer.writerows(lines)
 
 ########################
-#Получение инфы о системе:
+# Получение инфы о системе:
 # print(platform.system()) # название ОС
 # print(platform.platform()) # версия ОС
 # print(platform.processor()) # проц
 # print(platform.python_version())
 
-#print(*sorted([int(input()) for i in range(int(input()))],reverse=True)[:2],sep='_')
-#print([int(input()) for i in range(int(input()), int(input()))])
+# print(*sorted([int(input()) for i in range(int(input()))],reverse=True)[:2],sep='_')
+# print([int(input()) for i in range(int(input()), int(input()))])
 
 ###################
 
@@ -1170,19 +1170,19 @@
 #         if nums[i] > nums[i + 1]:
 #             nums[i], nums[i + 1] = nums[i + 1], nums[i]
 #             bubble_sort(nums)
-    # через цикл while:
-    # cycle = True
-    # while cycle:
-    #     cycle = False
-    #     for i in range(len(nums) - 1):
-    #         if nums[i] > nums[i + 1]:
-    #             nums[i], nums[i + 1] = nums[i + 1], nums[i]
-    #             cycle = True
+# через цикл while:
+# cycle = True
+# while cycle:
+#     cycle = False
+#     for i in range(len(nums) - 1):
+#         if nums[i] > nums[i + 1]:
+#             nums[i], nums[i + 1] = nums[i + 1], nums[i]
+#             cycle = True
 
 ########################
 
-#import roman # из/в римские - арабские: (ну или ниже 3 функции)
-#print(roman.toRoman(int(input())))
+# import roman # из/в римские - арабские: (ну или ниже 3 функции)
+# print(roman.toRoman(int(input())))
 
 # def to_roman(number: int) -> str:
 #     """
@@ -1462,7 +1462,7 @@
 
 ########################
 
-#nums = [0, 1, 0, 3, 12]
+# nums = [0, 1, 0, 3, 12]
 
 # def move_zeroes(lst: list):
 #     """
@@ -1479,7 +1479,7 @@
 ###########################
 
 # класс-декоратор может несолько раз вызвать функцию
-#from functools import wraps
+# from functools import wraps
 
 # class Example_d:
 #     __slots__ = ("count_method",)
@@ -1558,7 +1558,7 @@
 
 #########################
 
-#from itertools import takewhile
+# from itertools import takewhile
 
 # def same_length(n: int) -> bool:
 #     """
@@ -1579,22 +1579,22 @@
 # def dup_count(inp_str: str) -> int:
 #     return sum({let: inp_str.lower().count(let) > 1 for let in inp_str}.values())
 # или
-    # count_items: dict = {}
-    # for let in inp_str:
-    #     if let not in count_items and (n := inp_str.count(let) > 1):
-    #         count_items[let] = n
-    # return len(count_items)
+# count_items: dict = {}
+# for let in inp_str:
+#     if let not in count_items and (n := inp_str.count(let) > 1):
+#         count_items[let] = n
+# return len(count_items)
 # или
-    # count_items: list = []
-    # for items in n:
-    #     if n.count(items) > 2:
-    #         count_items.append(n.count(items))
-    # return len(count_items)
+# count_items: list = []
+# for items in n:
+#     if n.count(items) > 2:
+#         count_items.append(n.count(items))
+# return len(count_items)
 # или
 # def dup_count(string: str) -> int:
 #     sort_el: list = sorted(string.lower())
 #     return len({sort_el[i] for i in range(len(sort_el) - 1) if sort_el[i] == sort_el[i + 1]})
-#print(dup_count('abcde'))
+# print(dup_count('abcde'))
 
 #######################
 
@@ -1697,7 +1697,7 @@
 
 #################################
 
-#print('123' '456')
+# print('123' '456')
 
 ################################
 
@@ -1706,7 +1706,7 @@
 #     while num > 9:
 #         num: int = math.prod(map(int, str(num)))
 #     return num
-#print(persist(999))
+# print(persist(999))
 
 ########################
 
@@ -1757,7 +1757,7 @@
 #################################
 # import itertools
 # from pprint import pprint
-#from copy import deepcopy
+# from copy import deepcopy
 
 
 # from contextlib import suppress
@@ -1809,7 +1809,6 @@
 #   ['-', '#', '#', '-', '-'],  # [«1», «#», «#», «2», «0»] ok!
 #   ['-', '-', '-', '-', '-']   # [«1», «2», «2», «1», «0»] WRONG!
 # ])
-
 
 
 # def inner_func(index: int, i: int, v: int):
@@ -1959,14 +1958,14 @@
 #     """
 #     if matrx[-1][-1] != 0:
 #         return False
-#     i_zero = []
+#     i_zero: list = []
 #     for j,item in enumerate(matrx):
 #         i_zero.append([])
 #         for i, val in enumerate(item):
 #             if val == 0:
 #                 i_zero[j].append(i)
 #
-#     result = [[x for x in i_zero[i] if x in i_zero[i+1]] for i in range(len(i_zero)-1)]
+#     result: list = [[x for x in i_zero[i] if x in i_zero[i+1]] for i in range(len(i_zero)-1)]
 #     return all(num in i_zero[-1] for num in range(result[-1][-1], 7))
 #
 #
@@ -2003,3 +2002,201 @@
 # ]))
 
 ############################
+
+# Тип функции завит от конкретного значения аргумента: (@overload)
+
+
+# from typing import Final, overload, Literal, Union, IO, Text, Any
+
+# @overload
+# def open(path: Union[str, bytes], mode: Literal['r','w','a','x','r+','w+','a+','x+'],) -> IO[Text]:
+#     """
+#     Говорит что если на вход передаются такие модификаторы открытия файла ('r','w','a','x','r+','w+','a+','x+'), то
+#     будет выход (IO) текст
+#     """
+#     pass
+#
+# @overload
+# def open(path: Union[str, bytes], mode: Literal['rb','wb','ab','xb','r+b','w+b','a+b','x+b'],) -> IO[bytes]:
+#     """
+#     а если такие, то на выходе будут уже байты:
+#     :param path:
+#     :param mode:
+#     :return:
+#     """
+#     pass
+#
+# @overload
+# def open(path: Union[str, bytes], mode: str) -> IO[Any]:
+#     pass
+
+###############################
+
+# def unique_char(s: str) -> int:
+#     for i, val in enumerate(s):
+#         if s.count(val) == 1:
+#             return i
+#     else:
+#         return -1
+#
+#
+# def unique_char1(string):
+#     counter = 0
+#     try:
+#         while string.count(string[counter]) - 1:
+#             counter += 1
+#         else:
+#             return counter
+#     except:
+#         return -1
+#
+#
+# print(unique_char('python'))
+# print(unique_char('pythonTop'))
+# print(unique_char('aabb'))
+
+##############################
+
+# ещё одно поле в таблице пользователей - варифакация да-нет и проверять её при использовании функций бота,
+# давить 3 кнопки : сегодня завтра указать дату
+
+#print(datetime.datetime.now().hour)
+# time_zone = pytz.timezone('Europe/Moscow')
+# time_now = time_zone.localize(datetime.datetime.now())
+# #print(time_now.date())
+
+#######################################
+
+# симулировать 4 бросока кубика и записать сумму 3 самых больших
+# бросков. Так нужно будет сделать для каждой характеристики.
+import secrets
+
+# from secrets import choice
+# from math import floor
+#
+# class DndCharacter:
+#     """
+#     =======================
+#     Create Character object
+#     =======================
+#
+#     Cимуляция 4х бросоков кубика -> запись суммы 3х самых больших бросков для каждой характеристики при
+#     создании объекта класса (персонажа).
+#
+#     """
+#     def __new__(cls):
+#         self = object.__new__(cls)
+#
+#         def _creation_values() -> int:
+#             return sum(sorted((choice(range(1,6)) for _ in range(4)))[1:])
+#
+#         self._charisma = _creation_values()
+#         self._wisdom = _creation_values()
+#         self._constitution = _creation_values()
+#         self._dexterity = _creation_values()
+#         self._strength = _creation_values()
+#         self._intelligence = _creation_values()
+#         self._health = 10 + floor(self._constitution / 2)
+#
+#         return self
+#
+#     @property
+#     def charisma(self):
+#         return self._charisma
+#
+#     @property
+#     def wisdom(self):
+#         return self._wisdom
+#
+#     @property
+#     def constitution(self):
+#         return self._constitution
+#
+#     @property
+#     def dexterity(self):
+#         return self._dexterity
+#
+#     @property
+#     def strength(self):
+#         return self._strength
+#
+#     @property
+#     def intelligence(self):
+#         return self._intelligence
+#
+#     @property
+#     def health(self):
+#         return self._health
+#
+# a = DndCharacter()
+
+#####################################
+
+# loop = asyncio.get_event_loop()
+#
+# async def my_func():
+#     delay = 20
+#     # твоя логика с отправкой сообщений тут
+#     print('qwdqwfqfq')
+#     when_to_call = loop.time() + delay  # delay -- промежуток времени в секундах.
+#     loop.call_at(when_to_call, my_callback)
+#
+# def my_callback():
+#     asyncio.ensure_future(my_func())
+
+# import asyncio
+# import time
+# from datetime import datetime, date, time, timedelta
+# async def at_minute_start():
+#     while True:
+#         now = datetime.now().minute
+#         # after_minute = now.second + now.microsecond / 1_000_000
+#         if now == 45:
+#             print('qcqce')
+#             await asyncio.sleep(10)
+#         else:
+#             await asyncio.sleep(10)
+
+# loop = asyncio.get_event_loop()
+# loop.create_task(at_minute_start())
+# loop.run_forever()
+
+
+# def get_digest(file_path):
+#     h = hashlib.sha256()
+#     with open(file_path, 'rb') as f:
+#         while 1:
+#             chunk = f.read(h.block_size)
+#             if not chunk:
+#                 break
+#             h.update(chunk)
+#     return h.hexdigest()
+#
+#
+# pkl_key = 'secret-key'
+# msg = pickle.dumps(a_obj, protocol=5)
+# digest: bytes = hmac.digest(pkl_key.encode(), msg, 'sha256')
+#
+#
+# try:
+#     with open('data_todo.pickle', 'wb') as f:
+#         for items in (digest, b'delimiter', msg):
+#             f.write(items)
+#
+# except pickle.PicklingError:
+#     print('Ошибка сериализации (записи)')
+# try:
+#     with open('data_todo.pickle', 'rb') as f:
+#         new_data = f.read().split(b'delimiter')
+#         # Безопасное сравнение подписей.
+#         if not hmac.compare_digest(new_data[0], digest):
+#             raise pickle.UnpicklingError
+#         read_obj = pickle.loads(new_data[1])
+#
+# except pickle.UnpicklingError:
+#     print('Ошибка десериализации (чтения)')
+
+#print(hash_out == hash_inp)
+# timezone = 'Europe/Moscow'
+# NYC = zoneinfo.ZoneInfo(timezone)
+# datetime(2020, 1, 1, tzinfo=NYC)
