@@ -2065,11 +2065,15 @@
 # time_now = time_zone.localize(datetime.datetime.now())
 # #print(time_now.date())
 
+# timezone = 'Europe/Moscow'
+# NYC = zoneinfo.ZoneInfo(timezone)
+# datetime(2020, 1, 1, tzinfo=NYC)
+
 #######################################
 
 # симулировать 4 бросока кубика и записать сумму 3 самых больших
 # бросков. Так нужно будет сделать для каждой характеристики.
-import secrets
+
 
 # from secrets import choice
 # from math import floor
@@ -2161,18 +2165,10 @@ import secrets
 # loop.create_task(at_minute_start())
 # loop.run_forever()
 
+######################################################
 
-# def get_digest(file_path):
-#     h = hashlib.sha256()
-#     with open(file_path, 'rb') as f:
-#         while 1:
-#             chunk = f.read(h.block_size)
-#             if not chunk:
-#                 break
-#             h.update(chunk)
-#     return h.hexdigest()
-#
-#
+# import hmac
+# import pickle
 # pkl_key = 'secret-key'
 # msg = pickle.dumps(a_obj, protocol=5)
 # digest: bytes = hmac.digest(pkl_key.encode(), msg, 'sha256')
@@ -2187,16 +2183,46 @@ import secrets
 #     print('Ошибка сериализации (записи)')
 # try:
 #     with open('data_todo.pickle', 'rb') as f:
-#         new_data = f.read().split(b'delimiter')
+#         dig, new_data = f.read().split(b'delimiter')
 #         # Безопасное сравнение подписей.
-#         if not hmac.compare_digest(new_data[0], digest):
+#         dig_1: bytes = hmac.digest(pkl_key.encode(), msg, 'sha256')
+#         if hmac.compare_digest(dig_1, dig):
 #             raise pickle.UnpicklingError
-#         read_obj = pickle.loads(new_data[1])
+#         read_obj = pickle.loads(new_data)
 #
 # except pickle.UnpicklingError:
 #     print('Ошибка десериализации (чтения)')
-
+#
+# print(read_obj.i)
 #print(hash_out == hash_inp)
-# timezone = 'Europe/Moscow'
-# NYC = zoneinfo.ZoneInfo(timezone)
-# datetime(2020, 1, 1, tzinfo=NYC)
+
+###################################
+
+# try:
+#     try:
+#         raise  Exception('a')
+#     except Exception as e_a:
+#         print('e_a')
+#         print(e_a)
+#         raise Exception('b') from e_a
+# except Exception as e_b:
+#     print('e_b')
+#     print(e_b)
+#     #print_exception(e_b)
+
+####################################
+
+# def num_armstrong(num):
+#     """
+#     Проверка на 'число Aрмстронга'
+#     :param num:
+#     :return:
+#     """
+#     if len(val := str(num)) == 1:
+#         return True
+#     return sum(int(x) for x in map(lambda x: int(x) ** len(val), val)) == num
+#
+# print(num_armstrong(153))
+
+#####################################
+
